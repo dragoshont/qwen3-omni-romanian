@@ -1,5 +1,5 @@
 experiment: t4_joint_5h
-status: in_progress
+status: completed
 purpose: controlled_data_scaling
 initialization: stock_base_plus_fresh_adapters
 base_model: Qwen3-Omni
@@ -30,12 +30,14 @@ training:
   gradient_accumulation_steps: 4
   checkpoints: [500, 1000, 1500, 2000, 2500]
 evaluation:
-  seed: 42
+  sampling: stochastic_single_run
+  configured_seed: 42
+  seed_applied_in_completed_run: false
   temperature: 0.8
   top_k: 50
   top_p: 0.9
   repetition_penalty: 1.15
-  max_tokens: 350
+  max_tokens_policy: min(380, max(80, word_count * 20))
   codec_eos_token_id: 2148
   ground_truth_codec_tokens_at_inference: false
 selection:

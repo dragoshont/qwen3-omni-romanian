@@ -15,6 +15,13 @@ def main():
     if os.path.exists(t3_report_file):
         with open(t3_report_file, "r", encoding="utf-8") as f:
             t3_data = json.load(f)
+        t3_audit_file = "reports/champion_200_comprehensive_audit.json"
+        if os.path.exists(t3_audit_file):
+            with open(t3_audit_file, "r", encoding="utf-8") as f:
+                t3_audit = json.load(f).get("overall", {})
+            for key in ("eos_rate", "repetition_rate", "max_token_hit_rate"):
+                if key in t3_audit:
+                    t3_data[key] = t3_audit[key]
             
     eval_steps = [1000, 2000, 2500]
     t4_reports = {}
@@ -25,7 +32,7 @@ def main():
                 t4_reports[s] = json.load(f)
                 
     md = []
-    md.append("# Phase T4 Champion Declaration & Full-200 Comparison")
+    md.append("# Phase T4 Provisional Champion Declaration & Full-200 Comparison")
     md.append("## Rigorous Scientific Evaluation on Full 200 Held-Out Romanian Sentences (`eval/ro_holdout_200.jsonl`)\n")
     md.append("Dual-metric evaluation protocol: evaluating best stable-mean, best median-CER, and step 2500 under identical decoding parameters across all 10 held-out categories.\n")
     
@@ -132,12 +139,12 @@ def main():
                 scored.append((rank_score, s))
             scored.sort()
             champion_step = scored[0][1]
-            champion_reason = f"Step {champion_step} selected via composite Pareto ranking: Mean CER {t4_stats[champion_step]['mean_cer']*100:.2f}%, Median CER {t4_stats[champion_step]['median_cer']*100:.2f}%, Repetition {t4_stats[champion_step]['repetition_rate']:.1f}%."
+            champion_reason = f"Step {champion_step} selected by the pre-existing composite score (0.5 × mean CER + 0.5 × median CER, plus a 0.1 penalty only when repetition exceeds 1%): Mean CER {t4_stats[champion_step]['mean_cer']*100:.2f}%, Median CER {t4_stats[champion_step]['median_cer']*100:.2f}%, Repetition {t4_stats[champion_step]['repetition_rate']:.1f}%."
             
-    md.append(f"\n### Final Multi-Metric Champion Declaration")
+    md.append(f"\n### Provisional Multi-Metric Champion Declaration")
     if champion_step is not None:
         champ_c = t4_stats[champion_step]
-        md.append(f"- **Declared T4 Champion**: **Step {champion_step}**")
+        md.append(f"- **Provisional T4 Champion**: **Step {champion_step}**")
         md.append(f"- **Selection Rationale**: {champion_reason}")
         md.append(f"- **Champion Full-200 Mean CER**: **{champ_c['mean_cer']*100:.2f}%**")
         md.append(f"- **Champion Full-200 Median CER**: **{champ_c['median_cer']*100:.2f}%**")
@@ -150,6 +157,8 @@ def main():
             md.append(f"- **Relative Improvement vs T3 Control (1-Hour)**:")
             md.append(f"  * Median CER: **{-diff_med:.1f}% reduction** ({t3_stats['median_cer']*100:.2f}% -> {champ_c['median_cer']*100:.2f}%)")
             md.append(f"  * Mean CER: **{-diff_mean:.1f}% reduction** ({t3_stats['mean_cer']*100:.2f}% -> {champ_c['mean_cer']*100:.2f}%)")
+
+        md.append("- **Verification caveat**: each checkpoint was evaluated with one stochastic decoding run (`do_sample=True`) and the configured seed was not applied by the evaluator. Final release selection requires seeded repeated evaluation and blinded native-listener review.")
             
     out_md = "\n".join(md)
     print(out_md)

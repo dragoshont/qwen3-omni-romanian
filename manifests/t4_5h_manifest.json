@@ -9,7 +9,7 @@
   "sampling_rate": 24000,
   "rvq_codebooks": 16,
   "frame_rate_hz": 12.5,
-  "excluded_holdout_count": 201,
+  "excluded_holdout_count": 200,
   "manifest_path": "manifests/t4_5h_manifest.json",
   "codes_path": "reports/mimi_codes_ro_5h.jsonl",
   "samples": [

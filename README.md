@@ -21,7 +21,7 @@ The core hypothesis is working:
 - a joint ~1-hour Romanian run (T3) produces autonomous Romanian speech;
 - the controlled ~5-hour run (T4) improves both mean and median Full-200 CER over T3.
 
-**T4 is complete. Step 2,500 is the declared multi-metric champion:** 30.73% mean CER, 22.85% median CER, 100% EOS success and 1.0% repetition on the Full-200 benchmark.
+**T4 training is complete. Step 2,500 is the provisional multi-metric champion:** 30.73% mean CER, 22.85% median CER, 100% EOS success and 1.0% repetition on its Full-200 run. Because the completed comparisons used one unseeded stochastic decode per checkpoint, final release selection requires seeded repeats and native-listener evaluation.
 
 ## Why this exists
 
@@ -128,7 +128,7 @@ This is evidence that adaptation works. It is **not** yet a production-quality R
 
 ## T4 result
 
-T4 starts from the same stock Qwen base with **fresh adapters**. It is not a continuation from T3. Step 2,500 was selected by the declared composite rule after Full-200 evaluation of steps 1,000, 2,000 and 2,500.
+T4 starts from the same stock Qwen base with **fresh adapters**. It is not a continuation from T3. Step 2,500 was selected provisionally by the existing composite score after Full-200 evaluation of steps 1,000, 2,000 and 2,500.
 
 | Full-200 run | Mean CER | Median CER | P90 CER | Mean WER | Median WER | EOS | Repetition |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -137,7 +137,7 @@ T4 starts from the same stock Qwen base with **fresh adapters**. It is not a con
 | T4 step 2000 | 36.00% | 23.46% | **39.24%** | 77.62% | 65.99% | 100% | 1.0% |
 | T4 step 2500 | 30.73% | **22.85%** | 41.47% | **75.81%** | **63.64%** | 100% | 1.0% |
 
-Compared with T3, the selected step-2,500 checkpoint reduces mean CER by 20.3% and median CER by 22.0%. The full comparison, including category breakdowns and tail metrics, is in [`reports/t4_final_champion_declaration.md`](reports/t4_final_champion_declaration.md).
+Compared with T3 in these runs, step 2,500 reduces mean CER by 20.3% and median CER by 22.0%. The [verification audit](reports/t4_verification_audit.md) explains the report repair, train/eval alignment check, uncertainty and remaining selection gate; the [provisional declaration](reports/t4_final_champion_declaration.md) contains the full category comparison.
 
 This is a research result, not production-quality Romanian speech. ASR error remains high, category performance is uneven and native-listener evaluation is still required.
 

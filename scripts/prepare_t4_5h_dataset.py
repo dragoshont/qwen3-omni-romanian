@@ -61,8 +61,10 @@ def prepare_5h_dataset(target_seconds=18000.0, seed=42):
             for l in f:
                 if l.strip():
                     item = json.loads(l)
-                    excluded_texts.add(normalize_text(item.get("reference_text", "")))
-                    excluded_texts.add(normalize_text(item.get("text", "")))
+                    for field in ("reference_text", "text"):
+                        normalized = normalize_text(item.get(field, ""))
+                        if normalized:
+                            excluded_texts.add(normalized)
     print(f"Loaded {len(excluded_texts)} normalized held-out evaluation sentences to STRICTLY EXCLUDE.", flush=True)
     
     # 2. Output directories

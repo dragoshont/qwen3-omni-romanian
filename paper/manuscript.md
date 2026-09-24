@@ -4,7 +4,7 @@
 
 ## Abstract
 
-We investigate whether the speech-generation path of Qwen3-Omni can be adapted to Romanian without training the full multimodal model and without datacenter-class GPU memory. We first test a practical waveform-to-target-code bridge using Mimi-derived 16-stream acoustic tokens and the released Qwen Code2Wav decoder. We then conduct controlled ablations of MTP-only, Talker-only and joint Talker+MTP LoRA adaptation on an RTX 5080 16 GB. MTP-only does not improve autonomous Romanian generation, while Talker-only corrects termination behavior but remains linguistically poor. Joint adaptation on approximately one hour of Romanian produces a large held-out improvement and fits in approximately 12.2 GB VRAM. A controlled five-hour scaling experiment, initialized from the same stock base with fresh adapters, selects step 2,500 as the multi-metric champion. On Full-200 it reaches 30.73% mean CER and 22.85% median CER, relative reductions of 20.3% and 22.0% versus the one-hour T3 control.
+We investigate whether the speech-generation path of Qwen3-Omni can be adapted to Romanian without training the full multimodal model and without datacenter-class GPU memory. We first test a practical waveform-to-target-code bridge using Mimi-derived 16-stream acoustic tokens and the released Qwen Code2Wav decoder. We then conduct controlled ablations of MTP-only, Talker-only and joint Talker+MTP LoRA adaptation on an RTX 5080 16 GB. MTP-only does not improve autonomous Romanian generation, while Talker-only corrects termination behavior but remains linguistically poor. Joint adaptation on approximately one hour of Romanian produces a large held-out improvement and fits in approximately 12.2 GB VRAM. A controlled five-hour scaling experiment, initialized from the same stock base with fresh adapters, identifies step 2,500 as the provisional multi-metric champion. On its Full-200 run it reaches 30.73% mean CER and 22.85% median CER, relative reductions of 20.3% and 22.0% versus the one-hour T3 control. Seeded repeated decoding and native-listener evaluation remain required for final checkpoint selection.
 
 The work is maintained as an evidence-first research log. We distinguish practical/community evidence for Mimi compatibility from official model documentation and separate private-data experiments from release-cleared data.
 
@@ -60,7 +60,7 @@ Intermediate Quick-40:
 - step 1500: mean CER 26.50%, median 25.44%
 - step 2000: median CER 22.74%, with one catastrophic loop
 
-Full-200 evaluation selects step 2,500 as the multi-metric champion: mean CER 30.73%, median CER 22.85%, mean WER 75.81%, median WER 63.64%, 100% EOS success and 1.0% repetition.
+The initial Full-200 comparison selects step 2,500 provisionally: mean CER 30.73%, median CER 22.85%, mean WER 75.81%, median WER 63.64%, 100% EOS success and 1.0% repetition. The comparison used one unseeded stochastic decode per checkpoint.
 
 ## 5. Evaluation
 
@@ -90,7 +90,8 @@ Claims about production quality, scaling beyond five hours, full-model parity an
 
 ## 8. Future Work
 
-- conduct native-listener evaluation of the T4 champion;
+- run seeded repeated Full-200 evaluation of the T4 candidates;
+- conduct native-listener evaluation before final champion selection;
 - add larger controlled scaling point if useful;
 - compare equal-duration natural narration vs clean TTS-style speech;
 - add native-human preference;

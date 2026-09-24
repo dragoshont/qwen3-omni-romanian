@@ -76,16 +76,17 @@ Target:
 - ~3 effective passes
 - checkpoints at 500/1000/1500/2000/2500
 
-Quick-40 screens checkpoints. Full-200 confirms the final candidate.
+Quick-40 screens checkpoints. Full-200 compares release candidates; seeded repeats and native listening are required to confirm the final candidate.
 
 ## Controlled decoding
 
-- seed 42
+- completed T4 comparison: stochastic single runs; configured seed 42 was not applied
+- future verification: explicit recorded seed per run
 - temperature 0.8
 - top-k 50
 - top-p 0.9
 - repetition penalty 1.15
-- max tokens 350
+- max tokens `min(380, max(80, word_count * 20))`
 - codec EOS token id 2148
 
 Ground-truth codec tokens are forbidden during benchmark generation.

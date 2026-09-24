@@ -1,4 +1,4 @@
-# Phase T4 Champion Declaration & Full-200 Comparison
+# Phase T4 Provisional Champion Declaration & Full-200 Comparison
 ## Rigorous Scientific Evaluation on Full 200 Held-Out Romanian Sentences (`eval/ro_holdout_200.jsonl`)
 
 Dual-metric evaluation protocol: evaluating best stable-mean, best median-CER, and step 2500 under identical decoding parameters across all 10 held-out categories.
@@ -12,7 +12,7 @@ Dual-metric evaluation protocol: evaluating best stable-mean, best median-CER, a
 | **Median WER** | 75.00% | 70.00% | 65.99% | 63.64% |
 | **P90 WER** | 110.82% | 100.00% | 100.00% | 110.00% |
 | **EOS Success Rate** | 100.0% | 100.0% | 100.0% | 100.0% |
-| **Repetition Rate** | 0.0% | 0.5% | 1.0% | 1.0% |
+| **Repetition Rate** | 1.5% | 0.5% | 1.0% | 1.0% |
 | **Max-Token Hit Rate** | 0.0% | 0.0% | 0.0% | 0.0% |
 | **Mean Duration (s)** | 4.47s | 4.36s | 4.48s | 4.54s |
 | **Total Duration (s)** | 894.1s | 871.4s | 895.4s | 908.3s |
@@ -32,9 +32,9 @@ Dual-metric evaluation protocol: evaluating best stable-mean, best median-CER, a
 | **questions_exclamations** | 25.31% | 14.17% | 16.82% | 19.18% |
 | **long_sentences** | 47.46% | 27.21% | 23.42% | 35.61% |
 
-### Final Multi-Metric Champion Declaration
-- **Declared T4 Champion**: **Step 2500**
-- **Selection Rationale**: Step 2500 selected via composite Pareto ranking: Mean CER 30.73%, Median CER 22.85%, Repetition 1.0%.
+### Provisional Multi-Metric Champion Declaration
+- **Provisional T4 Champion**: **Step 2500**
+- **Selection Rationale**: Step 2500 selected by the pre-existing composite score (0.5 × mean CER + 0.5 × median CER, plus a 0.1 penalty only when repetition exceeds 1%): Mean CER 30.73%, Median CER 22.85%, Repetition 1.0%.
 - **Champion Full-200 Mean CER**: **30.73%**
 - **Champion Full-200 Median CER**: **22.85%**
 - **Champion Full-200 P90 CER**: **41.47%**
@@ -43,3 +43,4 @@ Dual-metric evaluation protocol: evaluating best stable-mean, best median-CER, a
 - **Relative Improvement vs T3 Control (1-Hour)**:
   * Median CER: **22.0% reduction** (29.30% -> 22.85%)
   * Mean CER: **20.3% reduction** (38.53% -> 30.73%)
+- **Verification caveat**: each checkpoint was evaluated with one stochastic decoding run (`do_sample=True`) and the configured seed was not applied by the evaluator. Final release selection requires seeded repeated evaluation and blinded native-listener review.

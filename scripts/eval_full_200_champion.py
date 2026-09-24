@@ -4,6 +4,7 @@ import json
 import time
 import gc
 import re
+import random
 import numpy as np
 import torch
 import soundfile as sf
@@ -40,10 +41,17 @@ def detect_repetition(text):
             return True
     return False
 
-def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=None, output_dir=None):
+def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=None, output_dir=None, seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("=" * 70, flush=True)
     print(f"FULL 200-SENTENCE HELD-OUT EVALUATION ON MODEL: {adapter_path}", flush=True)
+    print(f"Generation seed: {seed}", flush=True)
     print("=" * 70, flush=True)
     
     if report_path is None:
@@ -299,6 +307,15 @@ def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=Non
         "overall_rtf": round(total_gen_time / total_audio_duration, 2) if total_audio_duration > 0 else 0,
         "total_audio_duration_s": round(total_audio_duration, 2),
         "peak_vram_gb": round(vram_peak_gen, 2),
+        "evaluation_config": {
+            "seed": seed,
+            "do_sample": True,
+            "temperature": 0.8,
+            "top_k": 50,
+            "top_p": 0.9,
+            "repetition_penalty": 1.15,
+            "max_tokens_policy": "min(380, max(80, word_count * 20))",
+        },
         "category_breakdown": category_summary,
         "detailed_results": results,
     }
@@ -318,5 +335,5 @@ if __name__ == "__main__":
     adapter = sys.argv[1] if len(sys.argv) > 1 else "models/T3_talker_mtp/final"
     report = sys.argv[2] if len(sys.argv) > 2 else None
     out_dir = sys.argv[3] if len(sys.argv) > 3 else None
-    eval_champion_200(adapter, report, out_dir)
-
+    seed = int(sys.argv[4]) if len(sys.argv) > 4 else 42
+    eval_champion_200(adapter, report, out_dir, seed)

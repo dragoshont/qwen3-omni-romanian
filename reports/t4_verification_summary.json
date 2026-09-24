@@ -1,0 +1,234 @@
+{
+  "verification": {
+    "bootstrap_seed": 20260924,
+    "bootstrap_samples": 20000,
+    "holdout_sha256": "c5bcecd718fe9da40cc9d54e29c7c3f1ee3c6e5c945b3cfe28a27a0f9bfc86d8",
+    "report_sha256": {
+      "t3": "f26617f2c900245b1997843fbba40efceb2d8765acd63099b047b3c1647cb325",
+      "t4_step1000": "874233450159fdc1393486af010926fbe6a02b74f4e44830fc84297a05a44546",
+      "t4_step2000": "57cada9722fb2839096d7d409bf8483282e3c3135f6db9295077ecd1337280af",
+      "t4_step2500": "f84249bb3d43cbb2bd80979fff1b7b960298893855ceb58eff4aa36fb4635d6e"
+    }
+  },
+  "integrity": {
+    "t3": {
+      "row_count": 200,
+      "unique_id_count": 200,
+      "holdout_mismatch_count": 0,
+      "holdout_mismatch_ids": [],
+      "category_counts": {
+        "conversational": 20,
+        "a_a_i_heavy": 20,
+        "s_t_heavy": 20,
+        "affricates": 20,
+        "consonant_clusters": 20,
+        "numbers_dates": 20,
+        "names_places": 20,
+        "technical_english": 20,
+        "questions_exclamations": 20,
+        "long_sentences": 20
+      }
+    },
+    "t4_step1000": {
+      "row_count": 200,
+      "unique_id_count": 200,
+      "holdout_mismatch_count": 0,
+      "holdout_mismatch_ids": [],
+      "category_counts": {
+        "conversational": 20,
+        "a_a_i_heavy": 20,
+        "s_t_heavy": 20,
+        "affricates": 20,
+        "consonant_clusters": 20,
+        "numbers_dates": 20,
+        "names_places": 20,
+        "technical_english": 20,
+        "questions_exclamations": 20,
+        "long_sentences": 20
+      }
+    },
+    "t4_step2000": {
+      "row_count": 200,
+      "unique_id_count": 200,
+      "holdout_mismatch_count": 0,
+      "holdout_mismatch_ids": [],
+      "category_counts": {
+        "conversational": 20,
+        "a_a_i_heavy": 20,
+        "s_t_heavy": 20,
+        "affricates": 20,
+        "consonant_clusters": 20,
+        "numbers_dates": 20,
+        "names_places": 20,
+        "technical_english": 20,
+        "questions_exclamations": 20,
+        "long_sentences": 20
+      }
+    },
+    "t4_step2500": {
+      "row_count": 200,
+      "unique_id_count": 200,
+      "holdout_mismatch_count": 0,
+      "holdout_mismatch_ids": [],
+      "category_counts": {
+        "conversational": 20,
+        "a_a_i_heavy": 20,
+        "s_t_heavy": 20,
+        "affricates": 20,
+        "consonant_clusters": 20,
+        "numbers_dates": 20,
+        "names_places": 20,
+        "technical_english": 20,
+        "questions_exclamations": 20,
+        "long_sentences": 20
+      }
+    }
+  },
+  "recomputed_metrics": {
+    "t3": {
+      "count": 200,
+      "mean_cer": 0.38533149999999994,
+      "median_cer": 0.29295000000000004,
+      "p90_cer": 0.45128999999999997,
+      "trimmed_mean_cer_5pct": 0.29515166666666665,
+      "mean_wer": 0.878549,
+      "median_wer": 0.75,
+      "p90_wer": 1.1081799999999997,
+      "trimmed_mean_wer_5pct": 0.7709138888888889,
+      "cer_over_100pct_count": 2,
+      "wer_over_200pct_count": 2,
+      "repetition_rate": 1.5,
+      "eos_rate": 100.0,
+      "max_token_hit_rate": 0.0
+    },
+    "t4_step1000": {
+      "count": 200,
+      "mean_cer": 0.30089000000000005,
+      "median_cer": 0.23915,
+      "p90_cer": 0.44282999999999995,
+      "trimmed_mean_cer_5pct": 0.25727777777777777,
+      "mean_wer": 0.76103,
+      "median_wer": 0.7,
+      "p90_wer": 1.0,
+      "trimmed_mean_wer_5pct": 0.6913788888888888,
+      "cer_over_100pct_count": 1,
+      "wer_over_200pct_count": 1,
+      "repetition_rate": 0.5,
+      "eos_rate": 100.0,
+      "max_token_hit_rate": 0.0
+    },
+    "t4_step2000": {
+      "count": 200,
+      "mean_cer": 0.3600425,
+      "median_cer": 0.2346,
+      "p90_cer": 0.39242,
+      "trimmed_mean_cer_5pct": 0.2404855555555556,
+      "mean_wer": 0.7761929999999999,
+      "median_wer": 0.6598999999999999,
+      "p90_wer": 1.0,
+      "trimmed_mean_wer_5pct": 0.6508488888888889,
+      "cer_over_100pct_count": 3,
+      "wer_over_200pct_count": 2,
+      "repetition_rate": 1.0,
+      "eos_rate": 100.0,
+      "max_token_hit_rate": 0.0
+    },
+    "t4_step2500": {
+      "count": 200,
+      "mean_cer": 0.30725700000000006,
+      "median_cer": 0.22849999999999998,
+      "p90_cer": 0.4147,
+      "trimmed_mean_cer_5pct": 0.23997833333333335,
+      "mean_wer": 0.758086,
+      "median_wer": 0.6364,
+      "p90_wer": 1.1,
+      "trimmed_mean_wer_5pct": 0.6644755555555555,
+      "cer_over_100pct_count": 2,
+      "wer_over_200pct_count": 2,
+      "repetition_rate": 1.0,
+      "eos_rate": 100.0,
+      "max_token_hit_rate": 0.0
+    }
+  },
+  "paired_comparisons": {
+    "t4_step2500_vs_t3": {
+      "cer": {
+        "candidate_minus_baseline_mean": -0.07807449999999999,
+        "mean_delta_bootstrap_95pct_ci": [
+          -0.2929054,
+          0.1058814374999998
+        ],
+        "candidate_minus_baseline_median": -0.06445000000000006,
+        "median_delta_bootstrap_95pct_ci": [
+          -0.09400000000000003,
+          -0.03394875000000009
+        ],
+        "candidate_wins": 131,
+        "ties": 12,
+        "candidate_losses": 57
+      },
+      "wer": {
+        "candidate_minus_baseline_mean": -0.12046299999999999,
+        "mean_delta_bootstrap_95pct_ci": [
+          -0.388099175,
+          0.11427313749999962
+        ],
+        "candidate_minus_baseline_median": -0.11360000000000003,
+        "median_delta_bootstrap_95pct_ci": [
+          -0.17980000000000007,
+          -0.06059999999999999
+        ],
+        "candidate_wins": 121,
+        "ties": 11,
+        "candidate_losses": 68
+      }
+    },
+    "t4_step2500_vs_t4_step1000": {
+      "cer": {
+        "candidate_minus_baseline_mean": 0.0063669999999999985,
+        "mean_delta_bootstrap_95pct_ci": [
+          -0.1042103125,
+          0.15233662499999995
+        ],
+        "candidate_minus_baseline_median": -0.01065000000000002,
+        "median_delta_bootstrap_95pct_ci": [
+          -0.03815000000000002,
+          0.009852499999999808
+        ],
+        "candidate_wins": 104,
+        "ties": 3,
+        "candidate_losses": 93
+      },
+      "wer": {
+        "candidate_minus_baseline_mean": -0.002944000000000022,
+        "mean_delta_bootstrap_95pct_ci": [
+          -0.21157181249999996,
+          0.213118
+        ],
+        "candidate_minus_baseline_median": -0.06359999999999999,
+        "median_delta_bootstrap_95pct_ci": [
+          -0.11724999999999997,
+          -0.00029999999999996696
+        ],
+        "candidate_wins": 97,
+        "ties": 19,
+        "candidate_losses": 84
+      }
+    }
+  },
+  "selection": {
+    "formula": "0.5 * mean_cer + 0.5 * median_cer + (0.1 if repetition_rate > 1% else 0)",
+    "scores": {
+      "t4_step1000": 0.27002000000000004,
+      "t4_step2000": 0.29732125,
+      "t4_step2500": 0.2678785
+    },
+    "lowest_score": "t4_step2500",
+    "status": "provisional",
+    "caveats": [
+      "Each checkpoint has one stochastic decoding run.",
+      "The evaluator used do_sample=True but did not apply the configured seed.",
+      "Final selection requires seeded repeated evaluation and native-listener review."
+    ]
+  }
+}

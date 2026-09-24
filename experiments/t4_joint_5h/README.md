@@ -1,6 +1,6 @@
 # T4 — Joint Talker + MTP, ~5 Hours
 
-> **Completed 24 September 2026. Full-200 champion: step 2,500.**
+> **Training completed 24 September 2026. Provisional Full-200 champion: step 2,500.**
 
 ## Purpose
 
@@ -42,9 +42,9 @@ It is **not initialized from T3**.
 
 At step 2,000 a single catastrophic long-sentence loop inflated mean error while the median improved.
 
-## Full-200 champion selection
+## Provisional Full-200 champion selection
 
-Steps 1,000, 2,000 and 2,500 were evaluated on the same Full-200 set. Step 2,500 was selected by the declared multi-metric rule:
+Steps 1,000, 2,000 and 2,500 were evaluated on the same Full-200 set. Step 2,500 was selected provisionally by the existing composite score:
 
 - mean CER: 30.73%
 - median CER: 22.85%
@@ -54,3 +54,5 @@ Steps 1,000, 2,000 and 2,500 were evaluated on the same Full-200 set. Step 2,500
 - repetition: 1.0%
 
 See [`../../reports/t4_final_champion_declaration.md`](../../reports/t4_final_champion_declaration.md).
+
+The completed comparisons used one unseeded stochastic decode per checkpoint. See the [`T4 verification audit`](../../reports/t4_verification_audit.md); seeded repeated evaluation and native-listener review are required before final release selection.

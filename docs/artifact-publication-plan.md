@@ -76,13 +76,14 @@ host. Avoid committing weights to ordinary Git history.
 
 ## Release gates
 
-1. Complete T4 and freeze the reports.
-2. Select the checkpoint from the declared evaluation rule, not from a preferred anecdotal sample.
-3. Run a secret, path, PII and data-leakage scan.
-4. Verify the source dataset revision and all redistribution/voice obligations.
-5. Generate SHA-256 manifests for every released binary and dataset shard.
-6. Publish GitHub code/results and Hugging Face adapters/evaluation artifacts.
-7. Tag the matching GitHub commit and archive that release on Zenodo for a DOI.
+1. Complete T4 and preserve the original reports.
+2. Repeat Full-200 with explicit recorded seeds and complete blinded native-listener evaluation.
+3. Freeze the checkpoint using the declared selection rule, not a preferred anecdotal sample.
+4. Run a secret, path, PII and data-leakage scan.
+5. Verify the source dataset revision and all redistribution/voice obligations.
+6. Generate SHA-256 manifests for every released binary and dataset shard.
+7. Publish GitHub code/results and Hugging Face adapters/evaluation artifacts.
+8. Tag the matching GitHub commit and archive that release on Zenodo for a DOI.
 
 ## Community conventions behind this split
 
