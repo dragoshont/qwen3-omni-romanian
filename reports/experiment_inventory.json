@@ -1,0 +1,357 @@
+[
+  {
+    "experiment_id": "EXP_00_PREFLIGHT",
+    "name": "Hardware & PyTorch CUDA Preflight",
+    "status": "PASS",
+    "dataset_source": "synthetic tensor multiplication",
+    "clip_count": 0,
+    "audio_hours": 0.0,
+    "speaker_count": 0,
+    "trainable_components": [],
+    "frozen_components": [],
+    "epochs": 0,
+    "steps": 1,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "learning_rate": 0.0,
+    "lora_rank": 0,
+    "lora_target_modules": [],
+    "quantization": "none",
+    "start_loss": 0.0,
+    "end_loss": 0.0,
+    "peak_vram_gb": 0.05,
+    "checkpoint_path": null,
+    "generated_audio_paths": [],
+    "scientific_claims_supported": [
+      "PyTorch 2.11.0+cu128 natively supports Blackwell SM120 architecture on NVIDIA RTX 5080 without compiling from source."
+    ],
+    "scientific_claims_not_supported": [
+      "Does not evaluate audio or neural networks."
+    ]
+  },
+  {
+    "experiment_id": "EXP_01_SOURCE_VERIFICATION",
+    "name": "Community Codec Bridge Source Verification",
+    "status": "PASS",
+    "dataset_source": "source code inspection (DuplexOmni, Hert4, Qwen3-Omni, Qwen3-TTS)",
+    "clip_count": 0,
+    "audio_hours": 0.0,
+    "speaker_count": 0,
+    "trainable_components": [],
+    "frozen_components": [],
+    "epochs": 0,
+    "steps": 0,
+    "batch_size": 0,
+    "gradient_accumulation": 0,
+    "learning_rate": 0.0,
+    "lora_rank": 0,
+    "lora_target_modules": [],
+    "quantization": "none",
+    "start_loss": 0.0,
+    "end_loss": 0.0,
+    "peak_vram_gb": 0.0,
+    "checkpoint_path": null,
+    "generated_audio_paths": [],
+    "scientific_claims_supported": [
+      "DuplexOmni and Hert4 independently use first 16 codebooks of Kyutai Mimi codec at 12.5 Hz as targets.",
+      "Both freeze Code2Wav."
+    ],
+    "scientific_claims_not_supported": [
+      "Code inspection is circumstantial evidence, not empirical proof of audio quality."
+    ]
+  },
+  {
+    "experiment_id": "EXP_02_CODEC_BRIDGE_GATE",
+    "name": "Mimi to Qwen Code2Wav Cross-Decode Gate (Stage 6 & 7)",
+    "status": "PASS",
+    "dataset_source": "eduardem/romanian-tts-single-speaker (ro30)",
+    "clip_count": 30,
+    "audio_hours": 0.045,
+    "speaker_count": 1,
+    "trainable_components": [],
+    "frozen_components": [
+      "MimiModel",
+      "Code2Wav"
+    ],
+    "epochs": 0,
+    "steps": 30,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "learning_rate": 0.0,
+    "lora_rank": 0,
+    "lora_target_modules": [],
+    "quantization": "BF16",
+    "start_loss": 0.0,
+    "end_loss": 0.0,
+    "peak_vram_gb": 3.82,
+    "checkpoint_path": "models/qwen3-omni-partial/model-00015-of-00015.safetensors",
+    "generated_audio_paths": [
+      "outputs/qwen_code2wav_from_mimi/ro_sample_01.wav",
+      "outputs/qwen_code2wav_from_mimi/ro_sample_02.wav",
+      "outputs/qwen_code2wav_from_mimi/ro_sample_03.wav"
+    ],
+    "scientific_claims_supported": [
+      "Empirically proves Question A: Kyutai Mimi 16-codebook tokens reconstruct recognizable Romanian speech via Qwen Code2Wav.",
+      "Qwen Word Error Rate (6.4%) closely matches original audio (5.8%).",
+      "Romanian diacritics (\u0103, \u00e2, \u00ee, \u0219, \u021b) and affricates are preserved."
+    ],
+    "scientific_claims_not_supported": [
+      "Does not prove Qwen Talker can generate these tokens from text (Level 0 decoder test only)."
+    ]
+  },
+  {
+    "experiment_id": "EXP_03_TALKER_VRAM_PROFILING",
+    "name": "Talker 3.32B Standalone BF16 Memory Fit Measurement (Stage 9)",
+    "status": "MEASURED_CEILING",
+    "dataset_source": "synthetic Talker parameter loading",
+    "clip_count": 0,
+    "audio_hours": 0.0,
+    "speaker_count": 0,
+    "trainable_components": [],
+    "frozen_components": [
+      "Talker"
+    ],
+    "epochs": 0,
+    "steps": 0,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "learning_rate": 0.0,
+    "lora_rank": 0,
+    "lora_target_modules": [],
+    "quantization": "BF16",
+    "start_loss": 0.0,
+    "end_loss": 0.0,
+    "peak_vram_gb": 9.96,
+    "checkpoint_path": null,
+    "generated_audio_paths": [],
+    "scientific_claims_supported": [
+      "Talker has 3.32B parameters across 20 layers and 128 MoE experts per layer (~6.65 GB pure tensor storage).",
+      "Pure BF16 Talker training exceeds single 16 GB GPU on Windows due to desktop overhead (~2.1 GB) and WDDM chunk fragmentation."
+    ],
+    "scientific_claims_not_supported": [
+      "Does not mean Talker cannot train at all; requires 4-bit QLoRA or M5 Ultra host."
+    ]
+  },
+  {
+    "experiment_id": "EXP_04_MTP_LORA_PHASE1_RO30",
+    "name": "Romanian MTP LoRA Training (20 Epochs on ro30)",
+    "status": "PASS",
+    "dataset_source": "reports/mimi_codes.jsonl (ro30)",
+    "clip_count": 30,
+    "audio_hours": 0.045,
+    "speaker_count": 1,
+    "trainable_components": [
+      "TalkerCodePredictor (MTP) LoRA"
+    ],
+    "frozen_components": [
+      "MTP Base Weights",
+      "layer0_embedding",
+      "Code2Wav"
+    ],
+    "epochs": 20,
+    "steps": 600,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "learning_rate": 0.0001,
+    "lora_rank": 16,
+    "lora_target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "quantization": "BF16 Base + BF16 LoRA",
+    "start_loss": 9.75,
+    "end_loss": 1.9453,
+    "peak_vram_gb": 0.32,
+    "checkpoint_path": "models/romanian_mtp_lora/final",
+    "generated_audio_paths": [
+      "outputs/romanian_mtp_trained_eval/ro_sample_01_mtp_lora.wav",
+      "outputs/romanian_mtp_trained_eval/ro_sample_02_mtp_lora.wav",
+      "outputs/romanian_mtp_trained_eval/ro_sample_03_mtp_lora.wav"
+    ],
+    "scientific_claims_supported": [
+      "MTP LoRA converges stably on Romanian audio tokens, loss reducing from 9.75 to 1.94 in 77s.",
+      "Peak VRAM is under 0.35 GB."
+    ],
+    "scientific_claims_not_supported": [
+      "Audio evaluation uses teacher-forced ground-truth Stream 0 (Level 1 test). Does not prove text-to-speech."
+    ]
+  },
+  {
+    "experiment_id": "EXP_05_MTP_LORA_PHASE3_RO150",
+    "name": "Romanian MTP LoRA Continued Fine-Tuning (5 Epochs on ro150)",
+    "status": "PASS",
+    "dataset_source": "reports/mimi_codes_ro150.jsonl (ro150)",
+    "clip_count": 150,
+    "audio_hours": 0.22,
+    "speaker_count": 1,
+    "trainable_components": [
+      "TalkerCodePredictor (MTP) LoRA"
+    ],
+    "frozen_components": [
+      "MTP Base Weights",
+      "layer0_embedding",
+      "Code2Wav"
+    ],
+    "epochs": 5,
+    "steps": 750,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "learning_rate": 5e-05,
+    "lora_rank": 16,
+    "lora_target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "quantization": "BF16 Base + BF16 LoRA",
+    "start_loss": 1.7891,
+    "end_loss": 3.349,
+    "peak_vram_gb": 0.32,
+    "checkpoint_path": "models/romanian_mtp_lora_ro150/final",
+    "generated_audio_paths": [],
+    "scientific_claims_supported": [
+      "MTP adapts across 150 diverse Romanian clips with stable gradients and zero NaN/Inf."
+    ],
+    "scientific_claims_not_supported": [
+      "Average loss plateaued at ~3.34 across acoustic diversity."
+    ]
+  },
+  {
+    "experiment_id": "EXP_06_MTP_LORA_STAGE12B_RO500",
+    "name": "Scaled Romanian MTP Deep Training (15 Epochs on ro500)",
+    "status": "PASS",
+    "dataset_source": "reports/mimi_codes_ro500.jsonl (ro500)",
+    "clip_count": 500,
+    "audio_hours": 0.75,
+    "speaker_count": 1,
+    "trainable_components": [
+      "TalkerCodePredictor (MTP) LoRA"
+    ],
+    "frozen_components": [
+      "MTP Base Weights",
+      "layer0_embedding",
+      "Code2Wav"
+    ],
+    "epochs": 15,
+    "steps": 7500,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "learning_rate": 4e-05,
+    "lora_rank": 16,
+    "lora_target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "quantization": "BF16 Base + BF16 LoRA",
+    "start_loss": 3.4062,
+    "end_loss": 3.0625,
+    "peak_vram_gb": 4.91,
+    "checkpoint_path": "models/romanian_mtp_lora_ro500/final",
+    "generated_audio_paths": [
+      "outputs/romanian_mtp_trained_eval/ro_sample_01_ro500_mtp.wav",
+      "outputs/romanian_mtp_trained_eval/ro_sample_02_ro500_mtp.wav",
+      "outputs/romanian_mtp_trained_eval/ro_sample_03_ro500_mtp.wav",
+      "outputs/romanian_mtp_trained_eval/ro_sample_051_ro500_mtp.wav",
+      "outputs/romanian_mtp_trained_eval/ro_sample_0151_ro500_mtp.wav"
+    ],
+    "scientific_claims_supported": [
+      "Demonstrates direct dataset scaling: Character Error Rate improved from 51.4% (ro30) to 32.9% (ro500) under Whisper large-v3-turbo.",
+      "Completed 7,500 optimization steps in 23.98 minutes."
+    ],
+    "scientific_claims_not_supported": [
+      "WER remains at 74.6% because Stream 0 is supplied by ground truth, not predicted from text by Talker."
+    ]
+  },
+  {
+    "experiment_id": "EXP_07_CYCLE2_FULL15_DEPTH",
+    "name": "Full 15-Depth Codebook Supervision Fine-Tuning (ro500)",
+    "status": "PASS_REVERTED_TO_STAGE12B",
+    "dataset_source": "reports/mimi_codes_ro500.jsonl (ro500)",
+    "clip_count": 500,
+    "audio_hours": 0.75,
+    "speaker_count": 1,
+    "trainable_components": [
+      "TalkerCodePredictor (MTP) LoRA"
+    ],
+    "frozen_components": [
+      "MTP Base Weights",
+      "layer0_embedding",
+      "Code2Wav"
+    ],
+    "epochs": 6,
+    "steps": 3000,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "learning_rate": 2.5e-05,
+    "lora_rank": 16,
+    "lora_target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "quantization": "BF16 Base + BF16 LoRA",
+    "start_loss": 3.6963,
+    "end_loss": 3.525,
+    "peak_vram_gb": 4.95,
+    "checkpoint_path": "models/romanian_mtp_lora_cycle2_full15",
+    "generated_audio_paths": [
+      "outputs/autonomous_eval/cycle2_full15_ro_sample_01.wav"
+    ],
+    "scientific_claims_supported": [
+      "Successfully trained MTP with simultaneous loss over all 15 codebook levels."
+    ],
+    "scientific_claims_not_supported": [
+      "Did not improve objective WER over Stage 12B; per scientific rules, reverted to Stage 12B as primary checkpoint."
+    ]
+  },
+  {
+    "experiment_id": "EXP_08_RO1000_DATASET_EXPANSION",
+    "name": "Streaming and Tokenizing 1,000 Romanian Clips (ro1000)",
+    "status": "PASS",
+    "dataset_source": "eduardem/romanian-tts-single-speaker",
+    "clip_count": 1000,
+    "audio_hours": 1.258,
+    "speaker_count": 1,
+    "trainable_components": [],
+    "frozen_components": [
+      "MimiModel"
+    ],
+    "epochs": 0,
+    "steps": 1000,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "learning_rate": 0.0,
+    "lora_rank": 0,
+    "lora_target_modules": [],
+    "quantization": "FP32",
+    "start_loss": 0.0,
+    "end_loss": 0.0,
+    "peak_vram_gb": 0.6,
+    "checkpoint_path": null,
+    "generated_audio_paths": [],
+    "scientific_claims_supported": [
+      "1,000 diverse Romanian clips (75.5 minutes of audio) encoded into 16-codebook Mimi tokens and cached in reports/mimi_codes_ro1000.jsonl."
+    ],
+    "scientific_claims_not_supported": [
+      "Dataset expansion only; training across full ro1000 is queued in Stage 13."
+    ]
+  }
+]

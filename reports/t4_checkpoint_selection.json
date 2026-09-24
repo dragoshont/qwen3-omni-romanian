@@ -1,0 +1,15 @@
+{
+  "best_stable_mean_step": 2500,
+  "best_median_cer_step": 2000,
+  "step_2500_dominates": false,
+  "checkpoints_to_eval_full200": [
+    1000,
+    2000,
+    2500
+  ],
+  "preserve_steps": [
+    1000,
+    2000,
+    2500
+  ]
+}

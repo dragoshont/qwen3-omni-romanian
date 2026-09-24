@@ -1,31 +1,25 @@
 # Status
 
-_Last updated: 2026-09-24 18:28 EEST_
+_Last updated: 2026-09-24 21:25 EEST_
 
-## Active experiment
+## Completed experiment
 
 **T4 — controlled ~5-hour data-scaling experiment**
 
-- step at snapshot: ~2,140 / 2,500
+- completed: 2,500 optimizer steps
 - gradient accumulation: 4
-- pace: ~5.4 s / optimizer step
-- VRAM: ~12.57 GB
-- joint loss: ~5.64
-- Talker loss: ~2.37
-- MTP loss: ~3.08
-- final Quick-40: pending
-- Full-200: pending
+- peak training VRAM: ~12.57 GB
+- Full-200 candidates evaluated: steps 1,000, 2,000 and 2,500
+- declared champion: step 2,500
+- champion mean / median CER: 30.73% / 22.85%
+- champion mean / median WER: 75.81% / 63.64%
+- EOS success: 100%
+- repetition rate: 1.0%
 
 ## Interpretation
 
-T4 checkpoints 1,000 and 1,500 improve cleanly over the T3 1-hour Quick-40 control under identical decoding.
+Relative to the T3 one-hour control, T4 step 2,500 reduces mean CER by 20.3% and median CER by 22.0% on the same Full-200 protocol. Step 2,000 has a slightly better median than step 1,000 but a worse mean and more category instability. Step 2,500 is therefore the declared multi-metric champion.
 
-Checkpoint 2,000 reaches the lowest median CER/WER so far but contains one catastrophic loop, so it is not automatically the champion.
+See [`reports/t4_final_champion_declaration.md`](reports/t4_final_champion_declaration.md) for the complete comparison and category breakdown.
 
-Planned completion:
-
-1. finish step 2,500;
-2. evaluate Quick-40;
-3. retain the best stable-mean candidate and best robust/median candidate;
-4. if they differ, run Full-200 on both;
-5. declare a T4 champion only after Full-200.
+The next gates are native-listener evaluation, clean-environment reproduction and release-rights review for adapters and audio artifacts.

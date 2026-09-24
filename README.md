@@ -1,8 +1,16 @@
 # Qwen3-Omni Romanian Speech Adaptation
 
-> **Research repository — intermediate results, 24 September 2026.**
+> **Research repository — completed T4 results, 24 September 2026.**
 >
 > Ongoing evidence-first work on adapting the speech-generation path of **Qwen3-Omni** to Romanian on consumer hardware. The goal is reproducibility and falsifiable experiments, not a polished demo.
+
+## Target
+
+The long-term target is a Qwen3-Omni system that can hold **natural, intelligent spoken conversations in Romanian**: understand Romanian speech, reason over the conversation and respond directly with fluent Romanian speech, while preserving the broader multimodal architecture.
+
+This repository currently addresses the speech-generation part of that goal. It tests whether the released Talker/MTP path can be adapted to Romanian reproducibly on a 16 GB consumer GPU. It does **not** yet claim a complete low-latency duplex assistant; interruption, backchannels and simultaneous listening/speaking remain later research stages.
+
+Code, model adapters, datasets and archival research snapshots have different publication requirements. See the [artifact publication plan](docs/artifact-publication-plan.md) for what belongs on GitHub, Hugging Face and Zenodo.
 
 ## Current status
 
@@ -11,9 +19,9 @@ The core hypothesis is working:
 - a practical 16-stream Romanian target-code bridge has been validated through frozen Qwen Code2Wav;
 - real Talker + MTP adaptation fits on an RTX 5080 16 GB at roughly 12–13 GB VRAM;
 - a joint ~1-hour Romanian run (T3) produces autonomous Romanian speech;
-- the controlled ~5-hour run (T4) is currently improving held-out results.
+- the controlled ~5-hour run (T4) improves both mean and median Full-200 CER over T3.
 
-**T4 is still in progress. Final 2,500-step and Full-200 results are pending.**
+**T4 is complete. Step 2,500 is the declared multi-metric champion:** 30.73% mean CER, 22.85% median CER, 100% EOS success and 1.0% repetition on the Full-200 benchmark.
 
 ## Why this exists
 
@@ -48,7 +56,7 @@ Real Talker/MTP training, not just a toy dry run, occupies approximately:
 
 - T2: **12.13 GB**
 - T3: **12.16 GB**
-- T4 live snapshot: **12.57 GB**
+- T4: **12.57 GB**
 
 on an RTX 5080 16 GB.
 
@@ -118,21 +126,20 @@ Targets: 16 codec streams
 
 This is evidence that adaptation works. It is **not** yet a production-quality Romanian voice.
 
-## T4 intermediate snapshot
+## T4 result
 
-Snapshot: **2026-09-24 18:28 EEST**, around step **2,140 / 2,500**.
+T4 starts from the same stock Qwen base with **fresh adapters**. It is not a continuation from T3. Step 2,500 was selected by the declared composite rule after Full-200 evaluation of steps 1,000, 2,000 and 2,500.
 
-| Run | Checkpoint | Mean CER | Median CER | Mean WER | Median WER | EOS | Repetition |
+| Full-200 run | Mean CER | Median CER | P90 CER | Mean WER | Median WER | EOS | Repetition |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| T3 control | final | 30.86% | 28.49% | 78.97% | 78.36% | 100% | 0% |
-| T4 | 500 | 65.43% | 30.60% | 165.71% | 80.00% | 100% | 2.5% |
-| T4 | 1000 | **26.03%** | **24.68%** | **70.04%** | **69.62%** | 100% | 0% |
-| T4 | 1500 | 26.50% | 25.44% | 71.36% | 72.73% | 100% | 0% |
-| T4 | 2000 | 59.87%* | **22.74%** | 106.95%* | **66.67%** | 100% | 2.5% |
+| T3 control | 38.53% | 29.30% | 45.13% | 87.85% | 75.00% | 100% | 0.0% |
+| T4 step 1000 | **30.09%** | 23.91% | 44.28% | 76.10% | 70.00% | 100% | 0.5% |
+| T4 step 2000 | 36.00% | 23.46% | **39.24%** | 77.62% | 65.99% | 100% | 1.0% |
+| T4 step 2500 | 30.73% | **22.85%** | 41.47% | **75.81%** | **63.64%** | 100% | 1.0% |
 
-\* A single catastrophic loop inflated the arithmetic mean. This is why checkpoint selection uses more than one aggregate metric.
+Compared with T3, the selected step-2,500 checkpoint reduces mean CER by 20.3% and median CER by 22.0%. The full comparison, including category breakdowns and tail metrics, is in [`reports/t4_final_champion_declaration.md`](reports/t4_final_champion_declaration.md).
 
-T4 starts from the same stock Qwen base with **fresh adapters**. It is not a continuation from T3.
+This is a research result, not production-quality Romanian speech. ASR error remains high, category performance is uneven and native-listener evaluation is still required.
 
 ## Evaluation
 

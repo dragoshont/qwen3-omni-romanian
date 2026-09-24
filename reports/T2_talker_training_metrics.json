@@ -1,0 +1,317 @@
+{
+  "phase": "T2_talker_only",
+  "steps": 1000,
+  "initial_loss": 36.7066,
+  "final_loss": 3.034,
+  "total_training_time_s": 1189.23,
+  "peak_vram_gb": 12.17,
+  "loss_history": [
+    {
+      "step": 1,
+      "loss": 9.1766,
+      "learning_rate": 4.0000000000000003e-07,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 20,
+      "loss": 8.8477,
+      "learning_rate": 8.000000000000001e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 40,
+      "loss": 8.7933,
+      "learning_rate": 1.6000000000000003e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 60,
+      "loss": 8.4942,
+      "learning_rate": 1.999453257340926e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 80,
+      "loss": 7.97,
+      "learning_rate": 1.9950829025450116e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 100,
+      "loss": 7.3236,
+      "learning_rate": 1.9863613034027224e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 120,
+      "loss": 6.8929,
+      "learning_rate": 1.973326597248006e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 140,
+      "loss": 6.1372,
+      "learning_rate": 1.9560357815343577e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 160,
+      "loss": 5.6443,
+      "learning_rate": 1.934564464599461e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 180,
+      "loss": 5.0023,
+      "learning_rate": 1.909006535049163e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 200,
+      "loss": 4.7614,
+      "learning_rate": 1.879473751206489e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 220,
+      "loss": 4.5493,
+      "learning_rate": 1.8460952524209355e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 240,
+      "loss": 4.3001,
+      "learning_rate": 1.8090169943749477e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 260,
+      "loss": 4.0736,
+      "learning_rate": 1.7684011108568593e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 280,
+      "loss": 3.8551,
+      "learning_rate": 1.7244252047910893e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 300,
+      "loss": 3.8334,
+      "learning_rate": 1.6772815716257414e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 320,
+      "loss": 3.6581,
+      "learning_rate": 1.6271763584735373e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 340,
+      "loss": 3.5209,
+      "learning_rate": 1.5743286626829437e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 360,
+      "loss": 3.5048,
+      "learning_rate": 1.5189695737812153e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 380,
+      "loss": 3.3887,
+      "learning_rate": 1.461341162978688e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 400,
+      "loss": 3.4248,
+      "learning_rate": 1.4016954246529697e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 420,
+      "loss": 3.3837,
+      "learning_rate": 1.3402931744416432e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 440,
+      "loss": 3.2993,
+      "learning_rate": 1.2774029087618448e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 460,
+      "loss": 3.2983,
+      "learning_rate": 1.213299630743747e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 480,
+      "loss": 3.296,
+      "learning_rate": 1.148263647711842e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 500,
+      "loss": 3.2445,
+      "learning_rate": 1.0825793454723325e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 520,
+      "loss": 3.2171,
+      "learning_rate": 1.0165339447663586e-05,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 540,
+      "loss": 3.1605,
+      "learning_rate": 9.504162453267776e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 560,
+      "loss": 3.2131,
+      "learning_rate": 8.84515363030414e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 580,
+      "loss": 3.1243,
+      "learning_rate": 8.191194656678905e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 600,
+      "loss": 3.06,
+      "learning_rate": 7.545145128592009e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 620,
+      "loss": 3.1202,
+      "learning_rate": 6.909830056250527e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 640,
+      "loss": 3.0814,
+      "learning_rate": 6.2880275108177915e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 660,
+      "loss": 3.1772,
+      "learning_rate": 5.6824564766150724e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 680,
+      "loss": 2.9986,
+      "learning_rate": 5.095764961694923e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 700,
+      "loss": 3.0828,
+      "learning_rate": 4.530518418775734e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 720,
+      "loss": 3.0983,
+      "learning_rate": 3.989188527169749e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 740,
+      "loss": 3.0848,
+      "learning_rate": 3.4741423847583134e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 760,
+      "loss": 3.0552,
+      "learning_rate": 2.9876321572751143e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 780,
+      "loss": 2.9987,
+      "learning_rate": 2.5317852301584642e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 800,
+      "loss": 3.1089,
+      "learning_rate": 2.1085949060360654e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 820,
+      "loss": 3.0444,
+      "learning_rate": 1.7199116885197996e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 840,
+      "loss": 2.9478,
+      "learning_rate": 1.367435190424261e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 860,
+      "loss": 3.0459,
+      "learning_rate": 1.0527067017923654e-06,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 880,
+      "loss": 2.9895,
+      "learning_rate": 7.771024502261526e-07,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 900,
+      "loss": 3.0555,
+      "learning_rate": 5.418275829936537e-07,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 920,
+      "loss": 3.0613,
+      "learning_rate": 3.4791089722651437e-07,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 940,
+      "loss": 3.0085,
+      "learning_rate": 1.9620034125190645e-07,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 960,
+      "loss": 3.0383,
+      "learning_rate": 8.735930673024806e-08,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 980,
+      "loss": 3.0687,
+      "learning_rate": 2.1863727812254653e-08,
+      "vram_gb": 12.13
+    },
+    {
+      "step": 1000,
+      "loss": 3.034,
+      "learning_rate": 0.0,
+      "vram_gb": 12.13
+    }
+  ],
+  "checkpoint_path": "models/T2_talker_only/final"
+}

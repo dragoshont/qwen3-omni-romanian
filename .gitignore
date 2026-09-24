@@ -1,26 +1,48 @@
+# Training artifacts
+checkpoints/
+outputs/
+runs/
+logs/
+models/*
+!models/README.md
 *.safetensors
 *.bin
 *.pt
 *.pth
 *.ckpt
 *.gguf
-checkpoints/
-outputs/
-runs/
+
+# Datasets / audio
+data/*
+!data/README.md
+audio/
 *.wav
+*.flac
 *.mp3
 *.m4a
 *.m4b
-*.flac
 *.ogg
-data/raw/
-data/processed/
-data/cache/
-__pycache__/
-*.py[cod]
+
+# Private research
+PRIVATE_RND/
+private/
+
+# Large archives and token dumps
+*.zip
+reports/mimi_codes*.jsonl
+audit_snapshots/
+
+# Generated evaluation artifacts that are large
+eval/generated_audio/
+
+# Python
 .venv/
 venv/
-.env
+__pycache__/
+*.pyc
+*.py[cod]
+
+# IDE / OS
 .vscode/
 .idea/
 .DS_Store
@@ -28,3 +50,6 @@ Thumbs.db
 *.log
 tmp/
 cache/
+
+# Upstream clones
+src/

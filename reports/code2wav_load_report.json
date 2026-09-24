@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "total_parameters": 216016577,
+  "weight_memory_mb": 412.02,
+  "gpu_memory_before_load_mb": 0.0,
+  "gpu_memory_after_load_mb": 414.1,
+  "peak_gpu_memory_mb": 542.05,
+  "test_input_shape": [
+    1,
+    16,
+    50
+  ],
+  "test_output_shape": [
+    1,
+    1,
+    95445
+  ],
+  "strict_load": true
+}

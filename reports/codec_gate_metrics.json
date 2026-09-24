@@ -1,0 +1,708 @@
+{
+  "gate_decision": "PASS",
+  "total_samples": 30,
+  "intelligible_count": 27,
+  "intelligible_percentage": 90.0,
+  "average_wer": {
+    "original": 0.0582,
+    "mimi_baseline": 0.0521,
+    "qwen_from_mimi": 0.064
+  },
+  "average_cer": {
+    "original": 0.0496,
+    "mimi_baseline": 0.0482,
+    "qwen_from_mimi": 0.0506
+  },
+  "samples": [
+    {
+      "sample_id": "ro_sample_01",
+      "ground_truth": "De asemenea, autoritățile locale au închis școala pentru restul zilei.",
+      "asr_original": "De asemenea, autoritățile locale au închis școala pentru restul zilei.",
+      "asr_mimi": "De asemenea, autoritățile locale au închis școala pentru restul zilei.",
+      "asr_qwen": "De asemenea, autoritățile locale au închis școala pentru restul zilei.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.004
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_02",
+      "ground_truth": "Numai adevărul vă poate face liberi, trebuie să cunoașteți adevărul.",
+      "asr_original": "\"- Numai adevărul vă poate face liberi. Trebuie să cunoașteți adevărul.\"",
+      "asr_mimi": "\"- Numai adevărul vă poate face liberi. Trebuie să cunoașteți adevărul.\"",
+      "asr_qwen": "\"- Numai adevărul vă poate face liberi. Trebuie să cunoașteți adevărul.\"",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.003
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_03",
+      "ground_truth": "Totodată, doamna a cerut să vorbească cu cineva responsabil de situație.",
+      "asr_original": "Totodată, doamna ceru să vorbească cu cineva responsabil de situație.",
+      "asr_mimi": "\"- Totodată, doamna a cerut să vorbească cu cineva responsabil de situație.\"",
+      "asr_qwen": "Totodată, doamna ceru să vorbească cu cineva responsabil de situație.",
+      "wer": {
+        "original": 0.1818,
+        "mimi": 0.0,
+        "qwen": 0.1818
+      },
+      "cer": {
+        "original": 0.0429,
+        "mimi": 0.0,
+        "qwen": 0.0429
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_04",
+      "ground_truth": "La drept vorbind, nu cunoșteam nimic din literatura acestei țări.",
+      "asr_original": "La drept vorbind, nu cunoșteam nimic din literatura acestei țări.",
+      "asr_mimi": "La drept vorbind, nu cunoșteam nimic din literatura acestei țări.",
+      "asr_qwen": "La drept vorbind, nu cunoșteam nimic din literatura acestei țări.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.995
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_05",
+      "ground_truth": "Participarea este deschisă tuturor, intrarea la evenimente fiind liberă.",
+      "asr_original": "Participarea este deschisă tuturor, intrarea la evenimente fiind liberă.",
+      "asr_mimi": "Participarea este deschisă tuturor, intrarea la evenimente fiind liberă.",
+      "asr_qwen": "Participarea este deschisă tuturor, intrarea la evenimente fiind liberă.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.003
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_06",
+      "ground_truth": "Este în procedura de recepție a lucrărilor pe fonduri europene.",
+      "asr_original": "Este în procedura de recepție a lucrărilor pe fonduri europene.",
+      "asr_mimi": "Este în procedura de recepție a lucrărilor pe fonduri europene.",
+      "asr_qwen": "Este în procedura de recepție a lucrărilor pe fonduri europene.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.003
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_07",
+      "ground_truth": "Nu doar persoanele fizice au câștigat procese împotriva statului.",
+      "asr_original": "Nu doar persoanele fizice au câștigat procese împotriva statului.",
+      "asr_mimi": "Nu doar persoanele fizice au câștigat procese împotriva statului.",
+      "asr_qwen": "Nu doar persoanele fizice au câștigat procese împotriva statului.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.002
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_08",
+      "ground_truth": "Ochiul atent poate observa aspecte din viața socială și politică a vremii.",
+      "asr_original": "Ochiul atent poate observa aspecte din viața socială și politică a vremii.",
+      "asr_mimi": "Ochiul atent poate observa aspecte din viața socială și politică a vremii.",
+      "asr_qwen": "Ochiul atent poate observa aspecte din viața socială și politică a vremii.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_09",
+      "ground_truth": "Cătălina a vizitat Cluj-Napoca pe șaptesprezece februarie două mii douăzeci și șase.",
+      "asr_original": "Cătălina a vizitat Cluj-Napoca pe 17 februarie 2026.",
+      "asr_mimi": "Cătălina a vizitat Cluj-Napoca pe 17 februarie 2026.",
+      "asr_qwen": "Cătălina a vizitat Cluj-Napoca pe 17 februarie 2026.",
+      "wer": {
+        "original": 0.4615,
+        "mimi": 0.4615,
+        "qwen": 0.4615
+      },
+      "cer": {
+        "original": 0.4578,
+        "mimi": 0.4578,
+        "qwen": 0.4578
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.002
+      },
+      "intelligible": false
+    },
+    {
+      "sample_id": "ro_sample_10",
+      "ground_truth": "Ambele părți au suferit mult și au pierdut fiecare câteva unități majore.",
+      "asr_original": "Ambele părți au suferit mult și au pierdut fiecare câteva unități majore.",
+      "asr_mimi": "Ambele părți au suferit mult și au pierdut fiecare câteva unități majore.",
+      "asr_qwen": "Ambele părți au suferit mult și au pierdut fiecare câteva unități majore.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_11",
+      "ground_truth": "Cert e că printre mașini, a reprezentat un adevărat pericol.",
+      "asr_original": "Cert e că printre mașini a reprezentat un adevărat pericol.",
+      "asr_mimi": "Cert e că printre mașini a reprezentat un adevărat pericol.",
+      "asr_qwen": "Cert e că printre mașini a reprezentat un adevărat pericol.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.994
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_12",
+      "ground_truth": "Există doar posibilitatea de a te ridica la înălțimea lor.",
+      "asr_original": "Există doar posibilitatea de a te ridica la înălțimea lor.",
+      "asr_mimi": "Există doar posibilitatea de a te ridica la înălțimea lor.",
+      "asr_qwen": "Există doar posibilitatea de a te ridica la înălțimea lor.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.995
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_13",
+      "ground_truth": "Aceasta este și frumusețea vieții, pentru că viața este o căutare continuă.",
+      "asr_original": "Aceasta este și frumusețea vieții, pentru că viața este o căutare continuă.",
+      "asr_mimi": "Aceasta este și frumusețea vieții, pentru că viața este o căutare continuă.",
+      "asr_qwen": "Aceasta este și fumusețea vieții, pentru că viața este o căutare continuă.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0833
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0137
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_14",
+      "ground_truth": "În realitate, aceștia au fost lăsați ulterior să se întoarcă acasă.",
+      "asr_original": "În realitate, aceștia au fost lăsați ulterior să se-ntoarcă acasă.",
+      "asr_mimi": "În realitate, aceștia au fost lăsați ulterior să se-ntoarcă acasă.",
+      "asr_qwen": "În realitate, aceștia au fost lăsați ulterior să se-ntoarcă acasă.",
+      "wer": {
+        "original": 0.0909,
+        "mimi": 0.0909,
+        "qwen": 0.0909
+      },
+      "cer": {
+        "original": 0.0154,
+        "mimi": 0.0154,
+        "qwen": 0.0154
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_15",
+      "ground_truth": "Aceste rezultate au produs unde de șoc în întreaga comunitate de cercetători.",
+      "asr_original": "Aceste rezultate au produs unde de șoc în întreaga comunitate de cercetători.",
+      "asr_mimi": "Aceste rezultate au produs unde de șoc în întreaga comunitate de cercetători.",
+      "asr_qwen": "Aceste rezultate au produs unde de șoc în întreaga comunitate de cercetători.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.003
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_16",
+      "ground_truth": "Pentru noaptea asta sau pentru orice altă noapte trecută sau viitoare.",
+      "asr_original": "Pentru noaptea asta sau pentru orice altă noapte trecută sau viitoare,",
+      "asr_mimi": "Pentru noaptea asta sau pentru orice altă noapte trecută sau viitoare,",
+      "asr_qwen": "Pentru noaptea asta sau pentru orice altă noapte trecută sau viitoare,",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_17",
+      "ground_truth": "Această alegere nu doar adaugă stil, ci și rezistență la căldură.",
+      "asr_original": "Această alegere nu doar adaugă stil, ci și rezistență la căldură.",
+      "asr_mimi": "Această alegere nu doar adaugă stil, ci și rezistență la căldură.",
+      "asr_qwen": "Această alegere nu doar adaugă stil, ci și rezistență la căldură.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.995
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_18",
+      "ground_truth": "Alexandru a plătit cincisprezece mii nouă sute treizeci și șase de lei pentru mașină.",
+      "asr_original": "Alexandru a plătit 15.930 și 6 de lei pentru mașină.",
+      "asr_mimi": "Alexandru a plătit 15.930 și 6 de lei pentru mașină.",
+      "asr_qwen": "Alexandru a plătit 15.930 și 6 de lei pentru mașină.",
+      "wer": {
+        "original": 0.4286,
+        "mimi": 0.4286,
+        "qwen": 0.4286
+      },
+      "cer": {
+        "original": 0.4643,
+        "mimi": 0.4643,
+        "qwen": 0.4643
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": false
+    },
+    {
+      "sample_id": "ro_sample_19",
+      "ground_truth": "Situația locurilor de muncă este în creștere și la nivel național.",
+      "asr_original": "Situația locurilor de muncă este în creștere și la nivel național.",
+      "asr_mimi": "Situația locurilor de muncă este în creștere și la nivel național.",
+      "asr_qwen": "Situația locurilor de muncă este în creștere și la nivel național.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_20",
+      "ground_truth": "Simți vibrația în buzunar, scoase telefonul și se uită la număr.",
+      "asr_original": "Simți vibrația în buzunar, scoase telefonul și se uită la număr.",
+      "asr_mimi": "Simți vibrația în buzunar, scoase telefonul și se uită la număr.",
+      "asr_qwen": "Simți vibrația în buzunar, scoasă telefonul și se uită la număr.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0909
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0161
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.004
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_21",
+      "ground_truth": "Cu toate acestea, această credință este pusă astăzi în pace.",
+      "asr_original": "Cu toate acestea, această credință este pusă astăzi în pace.",
+      "asr_mimi": "Cu toate acestea, această credință este pusă astăzi în pace.",
+      "asr_qwen": "Cu toate acestea, această credință este pusă astăzi în pace.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.003
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_22",
+      "ground_truth": "Copiii fură cei asupra cărora schimbarea se vedea cel mai bine.",
+      "asr_original": "Copiii fură cei asupra cărora schimbarea se vedea cel mai bine.",
+      "asr_mimi": "Copiii fură cei asupra cărora schimbarea se vedea cel mai bine.",
+      "asr_qwen": "Copiii fură cei asupra cărora schimbarea se vedea cel mai bine.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.995
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_23",
+      "ground_truth": "Îi înțeleg logica, dar există o problemă în planul său.",
+      "asr_original": "Îi înțeleg logica, dar există o problemă în planul său.",
+      "asr_mimi": "Îi înțeleg logica, dar există o problemă în planul său.",
+      "asr_qwen": "Îi înțeleg logica, dar există o problemă în planul său.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.004
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_24",
+      "ground_truth": "Avem nevoie de toate materialele pe care le putem obține.",
+      "asr_original": "Avem nevoie de toate materialele pe care le putem obține.",
+      "asr_mimi": "Avem nevoie de toate materialele pe care le putem obține.",
+      "asr_qwen": "Avem nevoie de toate materialele pe care le putem obține.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_25",
+      "ground_truth": "Și va avea dreptate, fiindcă totul a fost greșeala mea.",
+      "asr_original": "Și va avea dreptate, fiindcă totul a fost greșeala mea.",
+      "asr_mimi": "Și va avea dreptate, fiindcă totul a fost greșeala mea.",
+      "asr_qwen": "Și va avea dreptate, fiindcă totul a fost greșeala mea.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.994
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_26",
+      "ground_truth": "Totuși, generalul în rezervă își mai face timp și de puțină relaxare.",
+      "asr_original": "Totuși, generalul în rezervă își mai face timp și de puține relaxare.",
+      "asr_mimi": "Totuși, generalul în rezervă își mai face timp și de puține relaxare.",
+      "asr_qwen": "Totuși, generalul în rezervă își mai face timp și de puține relaxare.",
+      "wer": {
+        "original": 0.0833,
+        "mimi": 0.0833,
+        "qwen": 0.0833
+      },
+      "cer": {
+        "original": 0.0149,
+        "mimi": 0.0149,
+        "qwen": 0.0149
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.995
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_27",
+      "ground_truth": "La nouă dimineața sunt deja îmbrăcată și aștept, însă nu vine nimeni.",
+      "asr_original": "La nouă dimineața sunt deja îmbrăcată și aștept, însă nu vine nimeni.",
+      "asr_mimi": "La nouă dimineața sunt deja îmbrăcată și aștept, însă nu vine nimeni.",
+      "asr_qwen": "La nouă dimineața sunt deja îmbrăcată și aștept, însă nu vine nimeni.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_28",
+      "ground_truth": "Am terminat însă chiar acum analiza unor probe de apă.",
+      "asr_original": "Am terminat însă chiar acum analiza unor probe de apă",
+      "asr_mimi": "Am terminat însă chiar acum analiza unor probe de apă",
+      "asr_qwen": "Am terminat însă chiar acum analiza unor probe de apă",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.003
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_29",
+      "ground_truth": "Chiar dacă voi fi despărțit de tine, dragostea mea va rămâne aceeași.",
+      "asr_original": "Chiar dacă voi fi despărțit de tine, dragostea mea va rămâne aceeași.",
+      "asr_mimi": "Chiar dacă voi fi despărțit de tine, dragostea mea va rămâne aceeași.",
+      "asr_qwen": "Chiar dacă voi fi despărțit de tine, dragostea mea va rămâne aceeași.",
+      "wer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "cer": {
+        "original": 0.0,
+        "mimi": 0.0,
+        "qwen": 0.0
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 1.003
+      },
+      "intelligible": true
+    },
+    {
+      "sample_id": "ro_sample_30",
+      "ground_truth": "Documentul a fost semnat pe șaptesprezece februarie două mii douăzeci și trei.",
+      "asr_original": "Documentul a fost semnat pe 17 februarie 2023.",
+      "asr_mimi": "Documentul a fost semnat pe 17 februarie 2023.",
+      "asr_qwen": "Documentul a fost semnat pe 17 februarie 2023.",
+      "wer": {
+        "original": 0.5,
+        "mimi": 0.5,
+        "qwen": 0.5
+      },
+      "cer": {
+        "original": 0.4935,
+        "mimi": 0.4935,
+        "qwen": 0.4935
+      },
+      "audio_checks": {
+        "has_nan": false,
+        "is_silent": false,
+        "duration_ratio": 0.996
+      },
+      "intelligible": false
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "avg_wer": 0.7461,
+  "avg_cer": 0.3199,
+  "samples": [
+    {
+      "wav_path": "outputs/romanian_mtp_trained_eval/ro_sample_01_ro500_mtp.wav",
+      "ref": "De asemenea, autorit\u0103\u021bile locale au \u00eenchis \u0219coala pentru restul zilei.",
+      "hyp": "Dar se menea uite\u021bilor ca la unchi\u0219covala pentru restul zilii.",
+      "wer": 0.8,
+      "cer": 0.3286
+    },
+    {
+      "wav_path": "outputs/romanian_mtp_trained_eval/ro_sample_02_ro500_mtp.wav",
+      "ref": "Numai adev\u0103rul v\u0103 poate face liberi, trebuie s\u0103 cunoa\u0219te\u021bi adev\u0103rul.",
+      "hyp": "Numai adverorul poate face nebilept biesi cuno\u0219te\u021bi adverorul.",
+      "wer": 0.7,
+      "cer": 0.3235
+    },
+    {
+      "wav_path": "outputs/romanian_mtp_trained_eval/ro_sample_03_ro500_mtp.wav",
+      "ref": "Totodat\u0103, doamna a cerut s\u0103 vorbeasc\u0103 cu cineva responsabil de situa\u021bie.",
+      "hyp": "\u00ab\u00cerp\u0103dat\u0103, doamna celu s\u0103u va robeasc\u0103-i cineva responsabilii de situa\u021bie!\u00bb",
+      "wer": 0.7273,
+      "cer": 0.2778
+    },
+    {
+      "wav_path": "outputs/romanian_mtp_trained_eval/ro_sample_051_ro500_mtp.wav",
+      "ref": "Alte surse vorbesc de un milion de bolnavi afla\u021bi \u00een tratament.",
+      "hyp": "Aite susere v\u0103 best\u0103 de un milion de b\u0103brun af afl\u0103\u021bii \u00een tratament.",
+      "wer": 0.6364,
+      "cer": 0.2698
+    },
+    {
+      "wav_path": "outputs/romanian_mtp_trained_eval/ro_sample_0151_ro500_mtp.wav",
+      "ref": "\u00cen urma unor procese, judec\u0103torii au decis c\u0103 suma trebuie s\u0103 fie trecut\u0103 pe factur\u0103.",
+      "hyp": "\u00cen urm\u0103 unul proces e\u0219ed c\u0103 totul e adicis c\u0103 s-a trebuit s\u0103 fie dec\u00e2t\u0103.",
+      "wer": 0.8667,
+      "cer": 0.4
+    }
+  ]
+}

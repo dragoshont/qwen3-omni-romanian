@@ -12,10 +12,10 @@
 ## Phase B — controlled scaling
 
 - [x] T3: ~1 h joint Talker/MTP.
-- [ ] T4: ~5 h, same architecture, fresh adapters.
-- [ ] Select T4 champion on Full-200.
+- [x] T4: ~5 h, same architecture, fresh adapters.
+- [x] Select T4 champion on Full-200.
 - [ ] Add a larger homogeneous-data point if it remains informative.
-- [ ] Report a learning curve with tail/failure analysis.
+- [x] Report a learning curve with tail/failure analysis.
 
 ## Phase C — data quality and prosody
 

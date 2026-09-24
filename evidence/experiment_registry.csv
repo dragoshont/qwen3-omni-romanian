@@ -7,3 +7,7 @@ T3,joint,~1h,talker_mtp_lora_r8_a16,full200,38.53,29.3,87.85,75.0,100.0,1.5,comp
 T4,joint,~5h,talker_mtp_lora_r8_a16,quick40_step1000,26.03,24.68,70.04,69.62,100.0,0.0,intermediate
 T4,joint,~5h,talker_mtp_lora_r8_a16,quick40_step1500,26.5,25.44,71.36,72.73,100.0,0.0,intermediate
 T4,joint,~5h,talker_mtp_lora_r8_a16,quick40_step2000,59.87,22.74,106.95,66.67,100.0,2.5,intermediate
+T4,joint,~5h,talker_mtp_lora_r8_a16,quick40_step2500,24.24,23.17,68.42,66.67,100.0,0.0,completed
+T4,joint,~5h,talker_mtp_lora_r8_a16,full200_step1000,30.09,23.91,76.10,70.0,100.0,0.5,completed
+T4,joint,~5h,talker_mtp_lora_r8_a16,full200_step2000,36.0,23.46,77.62,65.99,100.0,1.0,completed
+T4,joint,~5h,talker_mtp_lora_r8_a16,full200_step2500,30.73,22.85,75.81,63.64,100.0,1.0,champion

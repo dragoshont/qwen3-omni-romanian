@@ -1,0 +1,78 @@
+{
+  "timestamp": "2026-09-24T00:01:00Z",
+  "experiment": "Standalone Qwen3-Omni Talker / MTP VRAM Fit",
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "total_vram_gb": 15.89,
+  "os": "Windows 11 (WDDM)",
+  "precision": "bfloat16",
+  "model_architecture": {
+    "model_type": "Qwen3OmniMoeTalkerForConditionalGeneration",
+    "total_parameters": 3324596480,
+    "parameter_count_readable": "3.32 Billion",
+    "text_backbone": {
+      "layers": 20,
+      "hidden_size": 1024,
+      "num_local_experts": 128,
+      "num_experts_per_tok": 6,
+      "moe_intermediate_size": 384,
+      "shared_expert_intermediate_size": 768
+    },
+    "mtp_code_predictor": {
+      "layers": 5,
+      "hidden_size": 1024,
+      "num_code_groups": 16,
+      "vocab_size": 2048
+    }
+  },
+  "measurements": {
+    "non_expert_weights_vram_gb": 1.15,
+    "layer_expert_vram_per_5_layers_gb": 2.81,
+    "vram_at_layer_5_gb": 3.96,
+    "vram_at_layer_10_gb": 6.77,
+    "vram_at_layer_15_gb": 9.59,
+    "oom_failure_point": "Layer 16 / 20",
+    "pytorch_allocated_at_oom_gb": 9.96,
+    "windows_desktop_overhead_gb": 2.1,
+    "attempted_allocation_chunk_mb": 192.0,
+    "free_memory_reported_gb": 4.61,
+    "failure_cause": "CUDA memory fragmentation under Windows WDDM allocator; expandable_segments is unsupported on Windows"
+  },
+  "scientific_verdict": {
+    "fits_16gb_bf16_on_windows": false,
+    "reasons": [
+      "Talker contains 3.32B parameters across 20 layers of 128 MoE experts, requiring ~6.65 GB pure tensor storage.",
+      "On Windows, system GUI processes (Desktop Window Manager, Edge, Explorer, Armoury Crate) hold ~2.1 GB of locked VRAM.",
+      "PyTorch CUDA allocator on Windows WDDM experiences block fragmentation when allocating 192 MB expert weight blocks across 20 layers, triggering OOM at layer 16 (9.96 GB PyTorch allocation).",
+      "Training with AdamW optimizer states and forward activations would require at least 18-22 GB of VRAM in BF16, definitively exceeding a 16 GB gaming card."
+    ],
+    "solution_for_future": "Offload Thinker features on the 256 GB M5 Ultra, and for Talker training on RTX 5080, use 4-bit NF4 quantized base weights with QLoRA, or execute the full Talker training on the M5 Ultra."
+  },
+  "mtp_lora_dry_run": {
+    "status": "PASS",
+    "experiment": "Standalone MTP LoRA One-Step Dry Run",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "total_gpu_vram_gb": 15.89,
+    "total_parameters": 141775104,
+    "trainable_parameters": 204800,
+    "trainable_percentage": 0.144,
+    "vram_metrics_gb": {
+      "initial_allocated": 0.0,
+      "base_model_allocated": 0.264,
+      "after_lora_allocated": 0.264,
+      "forward_peak": 0.292,
+      "backward_peak": 0.299,
+      "optimizer_peak": 0.299,
+      "headroom_free_gb": 15.59
+    },
+    "performance": {
+      "seconds_per_step": 7.3848,
+      "loss_value": 12.442
+    },
+    "checkpoint_test": {
+      "saved_successfully": true,
+      "reloaded_successfully": true,
+      "path": "models/dry_run_lora_checkpoint"
+    },
+    "scientific_conclusion": "The multi-token speech predictor (MTP) component trains with extreme efficiency on RTX 5080 (under 0.8 GB peak VRAM). For the 3.3B MoE Talker backbone, 4-bit QLoRA or M5 Ultra host offloading provides the required memory headroom."
+  }
+}

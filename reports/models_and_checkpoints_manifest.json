@@ -1,0 +1,2318 @@
+[
+  {
+    "path": "models/code2wav.safetensors",
+    "size_bytes": 432058338,
+    "size_mb": 412.04,
+    "is_large_weight": true
+  },
+  {
+    "path": "models/README.md",
+    "size_bytes": 365,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/thinker_embed_tokens.safetensors",
+    "size_bytes": 622854264,
+    "size_mb": 594.0,
+    "is_large_weight": true
+  },
+  {
+    "path": "models/dry_run_lora_checkpoint/adapter_config.json",
+    "size_bytes": 1124,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/dry_run_lora_checkpoint/adapter_model.safetensors",
+    "size_bytes": 821816,
+    "size_mb": 0.78,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/dry_run_lora_checkpoint/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/manifest.json",
+    "size_bytes": 1486,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T2_talker_only_step1000/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T2_talker_only_step1000/adapter_model.safetensors",
+    "size_bytes": 3617880,
+    "size_mb": 3.45,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T2_talker_only_step1000/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T3_talker_mtp_step1000/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T3_talker_mtp_step1000/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T3_talker_mtp_step1000/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T3_talker_mtp_step1000/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T3_talker_mtp_step1000/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T3_talker_mtp_step1000/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_1000/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_1000/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_1000/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_1000/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_1000/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_1000/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2000/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2000/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2000/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2000/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2000/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2000/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2500/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2500/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2500/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2500/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2500/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/preserved_checkpoints/T4_checkpoint_step_2500/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/config.json",
+    "size_bytes": 13671,
+    "size_mb": 0.01,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/model-00013-of-00015.safetensors",
+    "size_bytes": 4999771808,
+    "size_mb": 4768.15,
+    "is_large_weight": true
+  },
+  {
+    "path": "models/qwen3-omni-partial/model-00014-of-00015.safetensors",
+    "size_bytes": 4996618552,
+    "size_mb": 4765.15,
+    "is_large_weight": true
+  },
+  {
+    "path": "models/qwen3-omni-partial/model-00015-of-00015.safetensors",
+    "size_bytes": 553698794,
+    "size_mb": 528.05,
+    "is_large_weight": true
+  },
+  {
+    "path": "models/qwen3-omni-partial/model.safetensors.index.json",
+    "size_bytes": 2727350,
+    "size_mb": 2.6,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/.cache/huggingface/.gitignore",
+    "size_bytes": 1,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/.cache/huggingface/CACHEDIR.TAG",
+    "size_bytes": 195,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/.cache/huggingface/download/config.json.metadata",
+    "size_bytes": 103,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/.cache/huggingface/download/model-00001-of-00015.safetensors.metadata",
+    "size_bytes": 128,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/.cache/huggingface/download/model-00013-of-00015.safetensors.metadata",
+    "size_bytes": 127,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/.cache/huggingface/download/model-00014-of-00015.safetensors.metadata",
+    "size_bytes": 128,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/.cache/huggingface/download/model-00015-of-00015.safetensors.metadata",
+    "size_bytes": 127,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-partial/.cache/huggingface/download/model.safetensors.index.json.metadata",
+    "size_bytes": 104,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-talker/config.json",
+    "size_bytes": 4614,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/qwen3-omni-talker/model.safetensors",
+    "size_bytes": 12689992224,
+    "size_mb": 12102.12,
+    "is_large_weight": true
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-1/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-1/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-1/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-10/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-10/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-10/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-15/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-15/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-15/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-20/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-20/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-20/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-5/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-5/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/checkpoint-epoch-5/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/final/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/final/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora/final/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_cycle2_full15/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_cycle2_full15/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_cycle2_full15/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-1/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-1/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-1/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-2/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-2/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-2/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-3/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-3/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-3/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-4/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-4/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-4/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-5/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-5/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/checkpoint-epoch-5/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/final/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/final/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro150/final/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-10/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-10/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-10/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-15/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-15/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-15/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-5/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-5/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/checkpoint-epoch-5/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/final/adapter_config.json",
+    "size_bytes": 1208,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/final/adapter_model.safetensors",
+    "size_bytes": 7218112,
+    "size_mb": 6.88,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/romanian_mtp_lora_ro500/final/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/adapter_model.safetensors",
+    "size_bytes": 3617880,
+    "size_mb": 3.45,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_1000/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_1000/adapter_model.safetensors",
+    "size_bytes": 3617880,
+    "size_mb": 3.45,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_1000/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_250/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_250/adapter_model.safetensors",
+    "size_bytes": 3617880,
+    "size_mb": 3.45,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_250/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_500/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_500/adapter_model.safetensors",
+    "size_bytes": 3617880,
+    "size_mb": 3.45,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_500/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_750/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_750/adapter_model.safetensors",
+    "size_bytes": 3617880,
+    "size_mb": 3.45,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T2_talker_only/final/checkpoint_step_750/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_1000/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_1000/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_1000/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_1000/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_1000/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_1000/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_250/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_250/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_250/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_250/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_250/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_250/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_500/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_500/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_500/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_500/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_500/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_500/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_750/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_750/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_750/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_750/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_750/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/checkpoint_step_750/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T3_talker_mtp/final/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1000/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1000/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1000/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1000/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1000/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1000/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1500/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1500/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1500/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1500/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1500/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_1500/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2000/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2000/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2000/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2000/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2000/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2000/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2500/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2500/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2500/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2500/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2500/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_2500/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_500/adapter_config.json",
+    "size_bytes": 1146,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_500/adapter_model.safetensors",
+    "size_bytes": 6082248,
+    "size_mb": 5.8,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_500/README.md",
+    "size_bytes": 5202,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_500/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_500/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/checkpoint_step_500/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_001.wav",
+    "size_bytes": 133334,
+    "size_mb": 0.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_006.wav",
+    "size_bytes": 156374,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_011.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_016.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_021.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_026.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_031.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_036.wav",
+    "size_bytes": 152534,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_041.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_046.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_051.wav",
+    "size_bytes": 148694,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_056.wav",
+    "size_bytes": 171734,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_061.wav",
+    "size_bytes": 152534,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_066.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_071.wav",
+    "size_bytes": 133334,
+    "size_mb": 0.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_076.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_081.wav",
+    "size_bytes": 156374,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_086.wav",
+    "size_bytes": 171734,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_091.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_096.wav",
+    "size_bytes": 156374,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_101.wav",
+    "size_bytes": 198614,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_106.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_111.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_116.wav",
+    "size_bytes": 225494,
+    "size_mb": 0.22,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_121.wav",
+    "size_bytes": 210134,
+    "size_mb": 0.2,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_126.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_131.wav",
+    "size_bytes": 202454,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_136.wav",
+    "size_bytes": 210134,
+    "size_mb": 0.2,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_141.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_146.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_151.wav",
+    "size_bytes": 206294,
+    "size_mb": 0.2,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_156.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_161.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_166.wav",
+    "size_bytes": 148694,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_171.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_176.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_181.wav",
+    "size_bytes": 624854,
+    "size_mb": 0.6,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_186.wav",
+    "size_bytes": 628694,
+    "size_mb": 0.6,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_191.wav",
+    "size_bytes": 621014,
+    "size_mb": 0.59,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1000/ro_eval_196.wav",
+    "size_bytes": 621014,
+    "size_mb": 0.59,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_001.wav",
+    "size_bytes": 133334,
+    "size_mb": 0.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_006.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_011.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_016.wav",
+    "size_bytes": 125654,
+    "size_mb": 0.12,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_021.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_026.wav",
+    "size_bytes": 133334,
+    "size_mb": 0.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_031.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_036.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_041.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_046.wav",
+    "size_bytes": 156374,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_051.wav",
+    "size_bytes": 148694,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_056.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_061.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_066.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_071.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_076.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_081.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_086.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_091.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_096.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_101.wav",
+    "size_bytes": 198614,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_106.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_111.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_116.wav",
+    "size_bytes": 217814,
+    "size_mb": 0.21,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_121.wav",
+    "size_bytes": 206294,
+    "size_mb": 0.2,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_126.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_131.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_136.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_141.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_146.wav",
+    "size_bytes": 198614,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_151.wav",
+    "size_bytes": 160214,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_156.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_161.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_166.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_171.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_176.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_181.wav",
+    "size_bytes": 582614,
+    "size_mb": 0.56,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_186.wav",
+    "size_bytes": 621014,
+    "size_mb": 0.59,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_191.wav",
+    "size_bytes": 582614,
+    "size_mb": 0.56,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_1500/ro_eval_196.wav",
+    "size_bytes": 559574,
+    "size_mb": 0.53,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_001.wav",
+    "size_bytes": 125654,
+    "size_mb": 0.12,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_006.wav",
+    "size_bytes": 148694,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_011.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_016.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_021.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_026.wav",
+    "size_bytes": 141014,
+    "size_mb": 0.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_031.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_036.wav",
+    "size_bytes": 152534,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_041.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_046.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_051.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_056.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_061.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_066.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_071.wav",
+    "size_bytes": 160214,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_076.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_081.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_086.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_091.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_096.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_101.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_106.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_111.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_116.wav",
+    "size_bytes": 229334,
+    "size_mb": 0.22,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_121.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_126.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_131.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_136.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_141.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_146.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_151.wav",
+    "size_bytes": 171734,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_156.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_161.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_166.wav",
+    "size_bytes": 156374,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_171.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_176.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_181.wav",
+    "size_bytes": 624854,
+    "size_mb": 0.6,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_186.wav",
+    "size_bytes": 651734,
+    "size_mb": 0.62,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_191.wav",
+    "size_bytes": 532694,
+    "size_mb": 0.51,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2000/ro_eval_196.wav",
+    "size_bytes": 594134,
+    "size_mb": 0.57,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_001.wav",
+    "size_bytes": 133334,
+    "size_mb": 0.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_006.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_011.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_016.wav",
+    "size_bytes": 121814,
+    "size_mb": 0.12,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_021.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_026.wav",
+    "size_bytes": 148694,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_031.wav",
+    "size_bytes": 171734,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_036.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_041.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_046.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_051.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_056.wav",
+    "size_bytes": 160214,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_061.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_066.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_071.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_076.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_081.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_086.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_091.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_096.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_101.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_106.wav",
+    "size_bytes": 213974,
+    "size_mb": 0.2,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_111.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_116.wav",
+    "size_bytes": 221654,
+    "size_mb": 0.21,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_121.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_126.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_131.wav",
+    "size_bytes": 167894,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_136.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_141.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_146.wav",
+    "size_bytes": 213974,
+    "size_mb": 0.2,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_151.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_156.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_161.wav",
+    "size_bytes": 202454,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_166.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_171.wav",
+    "size_bytes": 198614,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_176.wav",
+    "size_bytes": 194774,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_181.wav",
+    "size_bytes": 548054,
+    "size_mb": 0.52,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_186.wav",
+    "size_bytes": 628694,
+    "size_mb": 0.6,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_191.wav",
+    "size_bytes": 513494,
+    "size_mb": 0.49,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_2500/ro_eval_196.wav",
+    "size_bytes": 571094,
+    "size_mb": 0.54,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_001.wav",
+    "size_bytes": 148694,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_006.wav",
+    "size_bytes": 160214,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_011.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_016.wav",
+    "size_bytes": 156374,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_021.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_026.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_031.wav",
+    "size_bytes": 202454,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_036.wav",
+    "size_bytes": 160214,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_041.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_046.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_051.wav",
+    "size_bytes": 171734,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_056.wav",
+    "size_bytes": 202454,
+    "size_mb": 0.19,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_061.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_066.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_071.wav",
+    "size_bytes": 160214,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_076.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_081.wav",
+    "size_bytes": 164054,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_086.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_091.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_096.wav",
+    "size_bytes": 144854,
+    "size_mb": 0.14,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_101.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_106.wav",
+    "size_bytes": 183254,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_111.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_116.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_121.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_126.wav",
+    "size_bytes": 171734,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_131.wav",
+    "size_bytes": 217814,
+    "size_mb": 0.21,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_136.wav",
+    "size_bytes": 171734,
+    "size_mb": 0.16,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_141.wav",
+    "size_bytes": 213974,
+    "size_mb": 0.2,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_146.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_151.wav",
+    "size_bytes": 175574,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_156.wav",
+    "size_bytes": 221654,
+    "size_mb": 0.21,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_161.wav",
+    "size_bytes": 179414,
+    "size_mb": 0.17,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_166.wav",
+    "size_bytes": 156374,
+    "size_mb": 0.15,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_171.wav",
+    "size_bytes": 187094,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_176.wav",
+    "size_bytes": 190934,
+    "size_mb": 0.18,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_181.wav",
+    "size_bytes": 582614,
+    "size_mb": 0.56,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_186.wav",
+    "size_bytes": 582614,
+    "size_mb": 0.56,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_191.wav",
+    "size_bytes": 647894,
+    "size_mb": 0.62,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/eval_audio_step_500/ro_eval_196.wav",
+    "size_bytes": 605654,
+    "size_mb": 0.58,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/mtp_adapter/adapter_config.json",
+    "size_bytes": 1191,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/mtp_adapter/adapter_model.safetensors",
+    "size_bytes": 3284552,
+    "size_mb": 3.13,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/T4_data_scale_5h/final/mtp_adapter/README.md",
+    "size_bytes": 5158,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/talker_qlora_dry_run_ckpt/adapter_config.json",
+    "size_bytes": 1298,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/talker_qlora_dry_run_ckpt/adapter_model.safetensors",
+    "size_bytes": 7222488,
+    "size_mb": 6.89,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/talker_qlora_dry_run_ckpt/README.md",
+    "size_bytes": 5172,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/tokenizer/tokenizer.json",
+    "size_bytes": 11424262,
+    "size_mb": 10.9,
+    "is_large_weight": false
+  },
+  {
+    "path": "models/tokenizer/tokenizer_config.json",
+    "size_bytes": 988,
+    "size_mb": 0.0,
+    "is_large_weight": false
+  }
+]

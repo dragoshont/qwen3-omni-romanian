@@ -1,6 +1,6 @@
 # T4 — Joint Talker + MTP, ~5 Hours
 
-> **In progress. Snapshot: 2026-09-24 18:28 EEST.**
+> **Completed 24 September 2026. Full-200 champion: step 2,500.**
 
 ## Purpose
 
@@ -30,7 +30,7 @@ It is **not initialized from T3**.
 - ~3 effective epochs
 - checkpoints: 500 / 1000 / 1500 / 2000 / 2500
 
-## Live Quick-40
+## Quick-40 checkpoint screen
 
 | Step | Mean CER | Median CER | Mean WER | Median WER | EOS | Loops |
 |---:|---:|---:|---:|---:|---:|---:|
@@ -38,16 +38,19 @@ It is **not initialized from T3**.
 | 1000 | 26.03% | 24.68% | 70.04% | 69.62% | 100% | 0% |
 | 1500 | 26.50% | 25.44% | 71.36% | 72.73% | 100% | 0% |
 | 2000 | 59.87% | **22.74%** | 106.95% | **66.67%** | 100% | 2.5% |
-| 2500 | pending | pending | pending | pending | pending | pending |
+| 2500 | **24.24%** | 23.17% | **68.42%** | **66.67%** | 100% | 0% |
 
 At step 2,000 a single catastrophic long-sentence loop inflated mean error while the median improved.
 
-## Champion selection
+## Full-200 champion selection
 
-Do not automatically choose the lowest mean or final step.
+Steps 1,000, 2,000 and 2,500 were evaluated on the same Full-200 set. Step 2,500 was selected by the declared multi-metric rule:
 
-Preserve:
-1. best stable-mean candidate;
-2. best robust/median candidate.
+- mean CER: 30.73%
+- median CER: 22.85%
+- mean WER: 75.81%
+- median WER: 63.64%
+- EOS success: 100%
+- repetition: 1.0%
 
-If they differ, run Full-200 on both.
+See [`../../reports/t4_final_champion_declaration.md`](../../reports/t4_final_champion_declaration.md).

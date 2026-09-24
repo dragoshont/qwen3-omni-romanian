@@ -1,12 +1,13 @@
 # Models
 
-No trained adapters or weights are published in this intermediate scaffold.
+Base-model weights and locally trained adapters are not committed to ordinary
+Git history.
 
-A future release requires:
-1. clean reproducibility run
-2. base-model licence review
-3. training-data release review
-4. model card
-5. benchmark and failure analysis
-6. separate review for identifiable-voice material
-7. synthetic-audio transparency/marking plan where applicable
+The T4 release candidate is the step-2,500 Talker + MTP LoRA pair. It may be
+published in a dedicated Hugging Face model repository after clean-environment
+reproduction and release-rights review. The repository will link an immutable
+model revision and SHA-256 manifest when available.
+
+See the [artifact publication plan](../docs/artifact-publication-plan.md) for the
+model card, provenance, evaluation and licensing gates.
+

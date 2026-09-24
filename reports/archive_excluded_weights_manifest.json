@@ -1,0 +1,38 @@
+[
+  {
+    "path": "models/code2wav.safetensors",
+    "size_bytes": 432058338,
+    "size_mb": 412.04,
+    "reason": "Exceeds 30MB weight threshold (documented in manifest)"
+  },
+  {
+    "path": "models/thinker_embed_tokens.safetensors",
+    "size_bytes": 622854264,
+    "size_mb": 594.0,
+    "reason": "Exceeds 30MB weight threshold (documented in manifest)"
+  },
+  {
+    "path": "models/qwen3-omni-partial/model-00013-of-00015.safetensors",
+    "size_bytes": 4999771808,
+    "size_mb": 4768.15,
+    "reason": "Exceeds 30MB weight threshold (documented in manifest)"
+  },
+  {
+    "path": "models/qwen3-omni-partial/model-00014-of-00015.safetensors",
+    "size_bytes": 4996618552,
+    "size_mb": 4765.15,
+    "reason": "Exceeds 30MB weight threshold (documented in manifest)"
+  },
+  {
+    "path": "models/qwen3-omni-partial/model-00015-of-00015.safetensors",
+    "size_bytes": 553698794,
+    "size_mb": 528.05,
+    "reason": "Exceeds 30MB weight threshold (documented in manifest)"
+  },
+  {
+    "path": "models/qwen3-omni-talker/model.safetensors",
+    "size_bytes": 12689992224,
+    "size_mb": 12102.12,
+    "reason": "Exceeds 30MB weight threshold (documented in manifest)"
+  }
+]

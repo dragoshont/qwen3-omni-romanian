@@ -1,0 +1,11 @@
+OS: Windows 10 (10.0.26200)
+Machine: AMD64
+Python: 3.11.16 (main, Sep  1 2026, 14:15:24) [MSC v.1944 64 bit (AMD64)]
+PyTorch: 2.11.0+cu128
+CUDA available: True
+CUDA version: 12.8
+GPU: NVIDIA GeForce RTX 5080
+Compute capability: (12, 0)
+Total VRAM: 15.89 GB (17066033152 bytes)
+Initial allocated VRAM: 23.38 MB
+Initial reserved VRAM: 40.00 MB

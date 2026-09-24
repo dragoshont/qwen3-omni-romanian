@@ -1,0 +1,367 @@
+{
+  "phase": "T3_talker_mtp_joint",
+  "steps": 1000,
+  "final_loss": 6.3543,
+  "total_training_time_s": 3218.5,
+  "peak_vram_gb": 12.5,
+  "loss_history": [
+    {
+      "step": 1,
+      "joint_loss": 13.0427,
+      "talker_loss": 9.1766,
+      "mtp_loss": 3.866,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 20,
+      "joint_loss": 12.5854,
+      "talker_loss": 9.2212,
+      "mtp_loss": 3.6887,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 40,
+      "joint_loss": 12.4671,
+      "talker_loss": 8.9614,
+      "mtp_loss": 3.829,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 60,
+      "joint_loss": 12.1115,
+      "talker_loss": 7.8881,
+      "mtp_loss": 3.6011,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 80,
+      "joint_loss": 11.5682,
+      "talker_loss": 8.23,
+      "mtp_loss": 3.6309,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 100,
+      "joint_loss": 10.8562,
+      "talker_loss": 6.9522,
+      "mtp_loss": 3.372,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 120,
+      "joint_loss": 10.3857,
+      "talker_loss": 6.226,
+      "mtp_loss": 3.6092,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 140,
+      "joint_loss": 9.6135,
+      "talker_loss": 5.8453,
+      "mtp_loss": 3.5957,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 160,
+      "joint_loss": 9.1335,
+      "talker_loss": 5.4966,
+      "mtp_loss": 3.3502,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 180,
+      "joint_loss": 8.4328,
+      "talker_loss": 4.6075,
+      "mtp_loss": 3.3996,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 200,
+      "joint_loss": 8.239,
+      "talker_loss": 4.5329,
+      "mtp_loss": 3.5006,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 220,
+      "joint_loss": 7.9551,
+      "talker_loss": 4.5631,
+      "mtp_loss": 3.6099,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 240,
+      "joint_loss": 7.7389,
+      "talker_loss": 4.3527,
+      "mtp_loss": 3.3113,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 260,
+      "joint_loss": 7.5552,
+      "talker_loss": 3.619,
+      "mtp_loss": 3.3177,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 280,
+      "joint_loss": 7.3249,
+      "talker_loss": 3.6588,
+      "mtp_loss": 3.2386,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 300,
+      "joint_loss": 7.3191,
+      "talker_loss": 3.629,
+      "mtp_loss": 3.4083,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 320,
+      "joint_loss": 7.0935,
+      "talker_loss": 3.6652,
+      "mtp_loss": 3.3236,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 340,
+      "joint_loss": 6.9693,
+      "talker_loss": 3.5846,
+      "mtp_loss": 3.4419,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 360,
+      "joint_loss": 6.909,
+      "talker_loss": 3.679,
+      "mtp_loss": 3.457,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 380,
+      "joint_loss": 6.7539,
+      "talker_loss": 3.2678,
+      "mtp_loss": 3.3894,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 400,
+      "joint_loss": 6.8528,
+      "talker_loss": 3.0243,
+      "mtp_loss": 3.3807,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 420,
+      "joint_loss": 6.7804,
+      "talker_loss": 3.1381,
+      "mtp_loss": 3.4548,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 440,
+      "joint_loss": 6.6181,
+      "talker_loss": 3.9385,
+      "mtp_loss": 3.5765,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 460,
+      "joint_loss": 6.6529,
+      "talker_loss": 3.568,
+      "mtp_loss": 3.4642,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 480,
+      "joint_loss": 6.6493,
+      "talker_loss": 3.0658,
+      "mtp_loss": 3.4688,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 500,
+      "joint_loss": 6.6089,
+      "talker_loss": 3.3376,
+      "mtp_loss": 3.4473,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 520,
+      "joint_loss": 6.6194,
+      "talker_loss": 3.3789,
+      "mtp_loss": 3.323,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 540,
+      "joint_loss": 6.5342,
+      "talker_loss": 3.4309,
+      "mtp_loss": 3.5302,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 560,
+      "joint_loss": 6.5726,
+      "talker_loss": 3.2009,
+      "mtp_loss": 3.3942,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 580,
+      "joint_loss": 6.4996,
+      "talker_loss": 3.3078,
+      "mtp_loss": 3.4501,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 600,
+      "joint_loss": 6.3875,
+      "talker_loss": 2.7657,
+      "mtp_loss": 3.2465,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 620,
+      "joint_loss": 6.4563,
+      "talker_loss": 2.899,
+      "mtp_loss": 3.4271,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 640,
+      "joint_loss": 6.4146,
+      "talker_loss": 3.0733,
+      "mtp_loss": 3.4771,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 660,
+      "joint_loss": 6.5019,
+      "talker_loss": 3.0159,
+      "mtp_loss": 3.1785,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 680,
+      "joint_loss": 6.2923,
+      "talker_loss": 2.9783,
+      "mtp_loss": 3.2674,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 700,
+      "joint_loss": 6.4113,
+      "talker_loss": 3.2785,
+      "mtp_loss": 3.383,
+      "vram_gb": 12.15
+    },
+    {
+      "step": 720,
+      "joint_loss": 6.3648,
+      "talker_loss": 3.2942,
+      "mtp_loss": 3.4901,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 740,
+      "joint_loss": 6.3909,
+      "talker_loss": 3.0866,
+      "mtp_loss": 3.1933,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 760,
+      "joint_loss": 6.4075,
+      "talker_loss": 2.7591,
+      "mtp_loss": 3.2057,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 780,
+      "joint_loss": 6.3372,
+      "talker_loss": 2.8891,
+      "mtp_loss": 3.1512,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 800,
+      "joint_loss": 6.476,
+      "talker_loss": 3.0231,
+      "mtp_loss": 3.2813,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 820,
+      "joint_loss": 6.3738,
+      "talker_loss": 3.0376,
+      "mtp_loss": 3.2343,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 840,
+      "joint_loss": 6.2977,
+      "talker_loss": 3.0173,
+      "mtp_loss": 3.351,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 860,
+      "joint_loss": 6.3548,
+      "talker_loss": 3.2128,
+      "mtp_loss": 3.3724,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 880,
+      "joint_loss": 6.2654,
+      "talker_loss": 2.8436,
+      "mtp_loss": 3.3041,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 900,
+      "joint_loss": 6.3965,
+      "talker_loss": 2.6323,
+      "mtp_loss": 3.3032,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 920,
+      "joint_loss": 6.3758,
+      "talker_loss": 2.6827,
+      "mtp_loss": 3.3844,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 940,
+      "joint_loss": 6.2615,
+      "talker_loss": 3.5087,
+      "mtp_loss": 3.5161,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 960,
+      "joint_loss": 6.3272,
+      "talker_loss": 3.2628,
+      "mtp_loss": 3.3984,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 980,
+      "joint_loss": 6.3607,
+      "talker_loss": 2.8468,
+      "mtp_loss": 3.4207,
+      "vram_gb": 12.16
+    },
+    {
+      "step": 1000,
+      "joint_loss": 6.3543,
+      "talker_loss": 3.1478,
+      "mtp_loss": 3.3983,
+      "vram_gb": 12.16
+    }
+  ],
+  "checkpoint_path": "models/T3_talker_mtp/final"
+}

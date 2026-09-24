@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "experiment": "Standalone MTP LoRA One-Step Dry Run",
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "total_gpu_vram_gb": 15.89,
+  "total_parameters": 141775104,
+  "trainable_parameters": 204800,
+  "trainable_percentage": 0.144,
+  "vram_metrics_gb": {
+    "initial_allocated": 0.0,
+    "base_model_allocated": 0.264,
+    "after_lora_allocated": 0.264,
+    "forward_peak": 0.292,
+    "backward_peak": 0.299,
+    "optimizer_peak": 0.299,
+    "headroom_free_gb": 15.59
+  },
+  "performance": {
+    "seconds_per_step": 7.3848,
+    "loss_value": 12.442
+  },
+  "checkpoint_test": {
+    "saved_successfully": true,
+    "reloaded_successfully": true,
+    "path": "models/dry_run_lora_checkpoint"
+  },
+  "scientific_conclusion": "The multi-token speech predictor (MTP) component trains with extreme efficiency on RTX 5080 (under 0.8 GB peak VRAM). For the 3.3B MoE Talker backbone, 4-bit QLoRA or M5 Ultra host offloading provides the required memory headroom."
+}

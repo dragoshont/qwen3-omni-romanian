@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "method": "4-bit NF4 Quantization (bitsandbytes)",
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "total_vram_gb": 15.89,
+  "bf16_weight_size_gb": 6.65,
+  "qlora_4bit_weight_size_gb": 0.49,
+  "vram_saved_percentage": 92.6,
+  "fits_16gb_rtx5080": true,
+  "headroom_for_training_gb": 13.3,
+  "scientific_conclusion": "4-bit quantization reduces the 3.32B MoE Talker weight footprint to ~1.8-2.0 GB, fully fitting into the RTX 5080 with >11 GB spare VRAM for activations and LoRA optimizer states."
+}

@@ -1,0 +1,40 @@
+{"id": "ro_eval_001", "category": "conversational", "text": "Bună dimineața, mă bucur foarte mult să te revăd astăzi."}
+{"id": "ro_eval_006", "category": "conversational", "text": "Să ai o zi minunată și plină de realizări frumoase alături de cei dragi."}
+{"id": "ro_eval_011", "category": "conversational", "text": "Vremea de afară este superbă, numai bună pentru o plimbare lungă."}
+{"id": "ro_eval_016", "category": "conversational", "text": "Am ascultat cu mare atenție tot ce mi-ai povestit mai devreme."}
+{"id": "ro_eval_021", "category": "a_a_i_heavy", "text": "Păsările călătoare cântau încântător în lumina blândă a dimineții răcoroase."}
+{"id": "ro_eval_026", "category": "a_a_i_heavy", "text": "Căldura pământului uscat făcea ca aerul să tremure în depărtare."}
+{"id": "ro_eval_031", "category": "a_a_i_heavy", "text": "Încăpățânarea tânărului îl împiedica să asculte sfaturile înțelepte primite."}
+{"id": "ro_eval_036", "category": "a_a_i_heavy", "text": "Lăstarii tineri își făceau drum cu îndârjire prin scoarța uscată a copacului."}
+{"id": "ro_eval_041", "category": "s_t_heavy", "text": "Șoaptele liniștite ale serii se pierdeau treptat printre frunzele veștede."}
+{"id": "ro_eval_046", "category": "s_t_heavy", "text": "Șoimul plutea maiestuos pe cerul senin, scrutând ținutul de la înălțime."}
+{"id": "ro_eval_051", "category": "s_t_heavy", "text": "Țăranul își lucra pământul roditor din zori și până în amurgul liniștit."}
+{"id": "ro_eval_056", "category": "s_t_heavy", "text": "Țărmul stâncos era bătut neîncetat de valurile înspumate ale mării învolburate."}
+{"id": "ro_eval_061", "category": "affricates", "text": "Cercetătorii au descoperit un cerb magnific care pășea timid prin pădurea seculară."}
+{"id": "ro_eval_066", "category": "affricates", "text": "Ghioceii firavi își făceau apariția curajoasă de sub stratul alb de nea."}
+{"id": "ro_eval_071", "category": "affricates", "text": "Cina a fost servită într-o atmosferă caldă, acompaniată de o muzică lină."}
+{"id": "ro_eval_076", "category": "affricates", "text": "Ghidul montan ne-a condus în siguranță pe traseele abrupte și spectaculoase."}
+{"id": "ro_eval_081", "category": "consonant_clusters", "text": "Strălucirea diamantului șlefuit reflecta spectre spectaculoase de lumină albă."}
+{"id": "ro_eval_086", "category": "consonant_clusters", "text": "Strădania continuă a sportivilor s-a concretizat prin obținerea medaliei de aur."}
+{"id": "ro_eval_091", "category": "consonant_clusters", "text": "Zdrobit de oboseală după marșul lung, soldatul s-a așezat la umbra copacului."}
+{"id": "ro_eval_096", "category": "consonant_clusters", "text": "Strângerea recoltei s-a încheiat înainte de venirea primelor brume de toamnă."}
+{"id": "ro_eval_101", "category": "numbers_dates", "text": "În data de douăzeci și patru septembrie două mii douăzeci și șase vom lansa proiectul."}
+{"id": "ro_eval_106", "category": "numbers_dates", "text": "Temperatura exterioară a scăzut dramatic până la minus cincisprezece grade Celsius."}
+{"id": "ro_eval_111", "category": "numbers_dates", "text": "Abonamentul lunar costă doar patruzeci și nouă de lei și nouăzeci și nouă de bani."}
+{"id": "ro_eval_116", "category": "numbers_dates", "text": "Rezervația naturală adăpostește peste două sute de specii rare de păsări migratoare."}
+{"id": "ro_eval_121", "category": "names_places", "text": "Mihai Eminescu a scris poeme nemuritoare la mănăstirea Văratec din ținutul Neamțului."}
+{"id": "ro_eval_126", "category": "names_places", "text": "Municipiul Timișoara a fost primul oraș din Europa continentală cu iluminat public electric."}
+{"id": "ro_eval_131", "category": "names_places", "text": "Orașul Brașov este străjuit de muntele Tâmpa și de zidurile vechii cetăți săsești."}
+{"id": "ro_eval_136", "category": "names_places", "text": "Studiourile de film din Buftea au găzduit producții cinematografice românești celebre."}
+{"id": "ro_eval_141", "category": "technical_english", "text": "Algoritmul de machine learning optimizează parametrii modelului prin backpropagation eficient."}
+{"id": "ro_eval_146", "category": "technical_english", "text": "Framework-ul PyTorch alocă memorie VRAM pentru operațiile de deep learning pe GPU."}
+{"id": "ro_eval_151", "category": "technical_english", "text": "Interfața grafică a aplicației a fost redesenată folosind componente responsive moderne."}
+{"id": "ro_eval_156", "category": "technical_english", "text": "Rețeaua transformer include straturi de multi-head attention cu rotary position embedding."}
+{"id": "ro_eval_161", "category": "questions_exclamations", "text": "Oare vom reuși să finalizăm toate experimentele științifice înainte de miezul nopții?"}
+{"id": "ro_eval_166", "category": "questions_exclamations", "text": "Incredibil cât de mult a progresat tehnologia în doar câțiva ani de zile!"}
+{"id": "ro_eval_171", "category": "questions_exclamations", "text": "Ai verificat dacă toate fișierele de configurare au fost salvate corect în director?"}
+{"id": "ro_eval_176", "category": "questions_exclamations", "text": "Extraordinar, rezultatele obținute depășesc chiar și cele mai optimiste așteptări ale noastre!"}
+{"id": "ro_eval_181", "category": "long_sentences", "text": "Dezvoltarea recentă a modelelor multimodale de mari dimensiuni a deschis noi oportunități remarcabile pentru comunitatea științifică, permițând transpunerea ideilor teoretice complexe în soluții practice inovatoare capabile să înțeleagă și să genereze limbaj natural cu o fidelitate fără precedent."}
+{"id": "ro_eval_186", "category": "long_sentences", "text": "Diversitatea fonetică a eșantioanelor selectate din înregistrările narative de calitate profesională oferă rețelei neuronale un spectru acustic bogat, asigurând învățarea temeinică a tuturor tranzițiilor dintre consoane ocluzive, vocale deschise și consoane fricative caracteristice vorbirii românești cursive."}
+{"id": "ro_eval_191", "category": "long_sentences", "text": "Peisajul pitoresc al satelor tradiționale românești, așezate cuminți de-a lungul văilor străjuite de păduri seculare de brad și fag, a constituit dintotdeauna o sursă inepuizabilă de inspirație pentru scriitorii și poeții care au știut să surprindă sufletul profund și ospitalitatea caldă a oamenilor acestor locuri."}
+{"id": "ro_eval_196", "category": "long_sentences", "text": "Colaborarea armonioasă dintre mentorul artificial și discipolul dornic de cunoaștere a transformat camera de lucru a unui pasionat de jocuri video într-un veritabil laborator de cercetare experimentală, unde fiecare test eșuat era întâmpinat cu luciditate și fiecare reușită era consemnată cu rigoare."}
