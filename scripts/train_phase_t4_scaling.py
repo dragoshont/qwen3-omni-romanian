@@ -1,10 +1,12 @@
 import os
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+
+import argparse
 import sys
 import json
 import time
 import gc
 import math
-import random
 import torch
 import torch.nn.functional as F
 import safetensors.torch
@@ -22,6 +24,17 @@ from transformers import (
     pipeline,
 )
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from research_runtime import (
+    EpochShuffleSampler,
+    assert_adapter_isolation,
+    environment_record,
+    git_commit,
+    load_resume_state,
+    save_resume_state,
+    seed_everything,
+    sha256_file,
+    write_json,
+)
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -214,7 +227,13 @@ def evaluate_quick_40(talker, tokenizer, embed_weight, code2wav, step, output_di
     return eval_summary
 
 def train_phase_t4():
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    training_seed = int(os.environ.get("TRAINING_SEED", "42"))
+    seed_everything(training_seed)
+    if not torch.cuda.is_available():
+        raise RuntimeError("This 4-bit training protocol requires CUDA")
+    device = torch.device("cuda:0")
+    run_name = os.environ.get("RUN_NAME", "scaling_joint_5h_primary_2500")
+    run_quick40 = os.environ.get("RUN_QUICK40", "0") == "1"
     print("=" * 70, flush=True)
     print("PHASE T4: FRESH DATA-SCALE EXPERIMENT (5 Hours, Stock Base + Fresh LoRA)", flush=True)
     print("Architecture: Talker LoRA (r=8, alpha=16, q/v_proj) + MTP LoRA (r=8, alpha=16, all 6 targets)")
@@ -225,7 +244,7 @@ def train_phase_t4():
     gc.collect()
     torch.cuda.reset_peak_memory_stats()
     
-    output_dir = "models/T4_data_scale_5h/final"
+    output_dir = f"models/controlled/{run_name}/seed_{training_seed}"
     os.makedirs(output_dir, exist_ok=True)
     
     # 1. Load Tokenizer & Embeddings
@@ -235,12 +254,16 @@ def train_phase_t4():
     embed_weight = sd_embed["thinker.model.embed_tokens.weight"].to(device=device, dtype=torch.bfloat16)
     
     # 2. Load Frozen Code2Wav
-    print("2. Loading Code2Wav for Checkpoint Evaluations...", flush=True)
-    full_config = Qwen3OmniMoeConfig.from_pretrained("models/qwen3-omni-partial")
-    code2wav = Qwen3OmniMoeCode2Wav(full_config.code2wav_config).to(device=device, dtype=torch.bfloat16)
-    c2w_sd = safetensors.torch.load_file("models/code2wav.safetensors")
-    code2wav.load_state_dict(c2w_sd, strict=True)
-    code2wav.eval()
+    code2wav = None
+    if run_quick40:
+        print("2. Loading Code2Wav for development-set checkpoint evaluations...", flush=True)
+        full_config = Qwen3OmniMoeConfig.from_pretrained("models/qwen3-omni-partial")
+        code2wav = Qwen3OmniMoeCode2Wav(full_config.code2wav_config).to(device=device, dtype=torch.bfloat16)
+        c2w_sd = safetensors.torch.load_file("models/code2wav.safetensors")
+        code2wav.load_state_dict(c2w_sd, strict=True)
+        code2wav.eval()
+    else:
+        print("2. Fixed-endpoint confirmatory run: checkpoint evaluation disabled.", flush=True)
     
     # 3. Load 4-Bit Talker Backbone (STOCK BASE)
     print("3. Loading 4-Bit Talker Backbone (Stock Base)...", flush=True)
@@ -257,8 +280,9 @@ def train_phase_t4():
         torch_dtype=torch.bfloat16,
     )
     
-    # 4. Attach FRESH LoRA Adapters (Strictly Preserving Verified T3 Architecture)
+    # 4. Attach fresh, explicitly isolated adapters.
     print("4. Attaching FRESH LoRA Adapters (Preserving T3 Architecture)...", flush=True)
+    talker = prepare_model_for_kbit_training(talker, use_gradient_checkpointing=True)
     mtp_lora_config = LoraConfig(
         r=8,
         lora_alpha=16,
@@ -270,11 +294,11 @@ def train_phase_t4():
     talker.code_predictor = get_peft_model(talker.code_predictor, mtp_lora_config)
     print("Attached LoRA to MTP Code Predictor.", flush=True)
     
-    talker = prepare_model_for_kbit_training(talker, use_gradient_checkpointing=True)
     talker_lora_config = LoraConfig(
         r=8,
         lora_alpha=16,
         target_modules=["q_proj", "v_proj"],
+        exclude_modules=r".*code_predictor.*",
         lora_dropout=0.0,
         bias="none",
         task_type="CAUSAL_LM",
@@ -299,7 +323,7 @@ def train_phase_t4():
     )
     
     # 5. Load 5-Hour Dataset
-    data_file = "reports/mimi_codes_ro_5h.jsonl"
+    data_file = os.environ.get("TRAIN_DATA_FILE", "reports/mimi_codes_ro_5h.jsonl")
     print(f"Loading 5-hour Romanian training dataset from {data_file}...", flush=True)
     train_samples = []
     with open(data_file, "r", encoding="utf-8") as f:
@@ -311,19 +335,27 @@ def train_phase_t4():
     print(f"Loaded {num_samples} training utterances from 5-hour dataset.", flush=True)
     
     # Hyperparameters
-    NUM_STEPS = 2500
-    GRAD_ACCUM_STEPS = 4
-    LEARNING_RATE_TALKER = 2e-5
-    LEARNING_RATE_MTP = 4e-5
-    WARMUP_STEPS = 100
+    NUM_STEPS = int(os.environ.get("NUM_STEPS", "2500"))
+    GRAD_ACCUM_STEPS = int(os.environ.get("GRAD_ACCUM_STEPS", "4"))
+    LEARNING_RATE_TALKER = float(os.environ.get("LEARNING_RATE_TALKER", "2e-5"))
+    LEARNING_RATE_MTP = float(os.environ.get("LEARNING_RATE_MTP", "4e-5"))
+    WARMUP_STEPS = int(os.environ.get("WARMUP_STEPS", "100"))
+    SAVE_EVERY = int(os.environ.get("SAVE_EVERY", "250"))
     
     total_presentations = NUM_STEPS * GRAD_ACCUM_STEPS # 10,000
     effective_epochs = total_presentations / num_samples
     print(f"Training Plan: {NUM_STEPS} optimizer steps with grad_accum={GRAD_ACCUM_STEPS} ({total_presentations} presentations).")
     print(f"Effective Epochs: {effective_epochs:.2f} passes over the 5-hour dataset.")
     
-    talker_params = [p for n, p in talker.named_parameters() if p.requires_grad and "code_predictor" not in n]
-    mtp_params = [p for n, p in talker.named_parameters() if p.requires_grad and "code_predictor" in n]
+    talker_params, mtp_params, trainable_manifest = assert_adapter_isolation(
+        talker, require_mtp=True
+    )
+    talker_trainable_count = trainable_manifest["talker_parameter_count"]
+    mtp_trainable_count = trainable_manifest["mtp_parameter_count"]
+    print(
+        f"Verified adapter isolation: Talker={talker_trainable_count:,}, MTP={mtp_trainable_count:,}",
+        flush=True,
+    )
     
     optimizer = torch.optim.AdamW([
         {"params": talker_params, "lr": LEARNING_RATE_TALKER},
@@ -335,8 +367,27 @@ def train_phase_t4():
         num_warmup_steps=WARMUP_STEPS,
         num_training_steps=NUM_STEPS,
     )
+
+    run_config = {
+        "condition": "joint_talker_mtp",
+        "run_name": run_name,
+        "training_seed": training_seed,
+        "data_file": data_file,
+        "data_sha256": sha256_file(data_file),
+        "sample_count": num_samples,
+        "num_steps": NUM_STEPS,
+        "gradient_accumulation_steps": GRAD_ACCUM_STEPS,
+        "learning_rate_talker": LEARNING_RATE_TALKER,
+        "learning_rate_mtp": LEARNING_RATE_MTP,
+        "warmup_steps": WARMUP_STEPS,
+        "mtp_frame_subsample": 64,
+        "sampler": "deterministic epoch shuffle",
+        "speaker_token_id": speaker_id,
+        "quick40_checkpoint_selection": run_quick40,
+        "fixed_endpoint": not run_quick40,
+    }
     
-    eval_checkpoints = [500, 1000, 1500, 2000, 2500]
+    eval_checkpoints = list(range(500, NUM_STEPS + 1, 500)) if run_quick40 else []
     checkpoint_eval_history = []
     loss_history = []
     step_losses = []
@@ -345,24 +396,41 @@ def train_phase_t4():
     talker.train()
     optimizer.zero_grad()
     
-    sample_idx = 0
     total_samples = len(train_samples)
+    sampler = EpochShuffleSampler(total_samples, training_seed)
     
     num_mtp_layers = 15
     consecutive_regressions = 0
     best_eval_cer = float("inf")
-    best_eval_checkpoint = 2500
+    best_eval_checkpoint = None
+    start_step = 0
+    resume_path = os.path.join(output_dir, "training_state.pt")
+    if os.path.exists(resume_path) and os.environ.get("FORCE_FRESH", "0") != "1":
+        start_step, loss_history, step_losses, extra_state = load_resume_state(
+            resume_path,
+            model=talker,
+            optimizer=optimizer,
+            scheduler=lr_scheduler,
+            sampler=sampler,
+            expected_config=run_config,
+        )
+        checkpoint_eval_history = list(extra_state.get("checkpoint_eval_history", []))
+        consecutive_regressions = int(extra_state.get("consecutive_regressions", 0))
+        best_eval_cer = float(extra_state.get("best_eval_cer", float("inf")))
+        best_eval_checkpoint = extra_state.get("best_eval_checkpoint")
+        print(f"Resumed exact training state after step {start_step}.", flush=True)
     
-    print("\nStarting T4 Training with Scheduled Quick-40 Checkpoint Evaluations...\n", flush=True)
+    mode = "development checkpoint evaluation" if run_quick40 else "fixed endpoint"
+    print(f"\nStarting T4 confirmatory training ({mode})...\n", flush=True)
     
-    for step in range(1, NUM_STEPS + 1):
+    for step in range(start_step + 1, NUM_STEPS + 1):
         step_loss = 0.0
         step_talker_loss = 0.0
         step_mtp_loss = 0.0
+        stop_requested = False
         
         for micro_step in range(GRAD_ACCUM_STEPS):
-            sample = train_samples[sample_idx % total_samples]
-            sample_idx += 1
+            sample = train_samples[sampler.next()]
             
             transcript = sample["transcript"]
             codes_16 = torch.tensor(sample["codes_16"], dtype=torch.long, device=device) # [16, num_frames]
@@ -489,7 +557,7 @@ def train_phase_t4():
             avg_loss = sum(step_losses[-20:]) / len(step_losses[-20:])
             vram_gb = torch.cuda.memory_allocated() / (1024**3)
             elapsed = time.perf_counter() - t_start
-            sec_per_step = elapsed / step
+            sec_per_step = elapsed / max(1, step - start_step)
             eta_min = (NUM_STEPS - step) * sec_per_step / 60.0
             
             print(f"Step [{step:04d}/{NUM_STEPS}] | Joint Loss: {avg_loss:.4f} (T: {step_talker_loss:.4f}, MTP: {step_mtp_loss:.4f}) | VRAM: {vram_gb:.2f} GB | ETA: {eta_min:.1f}m", flush=True)
@@ -501,18 +569,21 @@ def train_phase_t4():
                 "vram_gb": round(vram_gb, 2),
             })
             
-        # Checkpoint save and evaluation
-        if step in eval_checkpoints:
+        # Checkpoint save; confirmatory runs use a fixed endpoint and do not
+        # inspect evaluation data during optimization.
+        if step % SAVE_EVERY == 0 or step == NUM_STEPS:
             ckpt_path = os.path.join(output_dir, f"checkpoint_step_{step}")
             talker.save_pretrained(ckpt_path)
             model_obj.code_predictor.save_pretrained(os.path.join(ckpt_path, "mtp_adapter"))
             print(f"Saved checkpoint to {ckpt_path}", flush=True)
-            
+
+        if step in eval_checkpoints:
             # Run quick-40 evaluation
             eval_metrics = evaluate_quick_40(talker, tokenizer, embed_weight, code2wav, step, output_dir, device)
             checkpoint_eval_history.append(eval_metrics)
             
-            with open("reports/t4_checkpoint_eval_history.json", "w", encoding="utf-8") as f:
+            eval_history_path = f"reports/t4_v2_seed{training_seed}_checkpoint_eval_history.json"
+            with open(eval_history_path, "w", encoding="utf-8") as f:
                 json.dump(checkpoint_eval_history, f, indent=2, ensure_ascii=False)
                 
             cur_cer = eval_metrics["mean_cer"]
@@ -531,10 +602,31 @@ def train_phase_t4():
                     
             if consecutive_regressions >= 2:
                 print(f"\n[EARLY STOPPING TRIGGERED] Two consecutive clear held-out regressions observed. Halting training at step {step}.", flush=True)
-                break
+                stop_requested = True
             if eval_metrics["repetition_rate"] > 10.0:
                 print(f"\n[EARLY STOPPING TRIGGERED] Catastrophic repetition behavior detected ({eval_metrics['repetition_rate']}%). Halting training at step {step}.", flush=True)
-                break
+                stop_requested = True
+
+        if step % SAVE_EVERY == 0 or step == NUM_STEPS:
+            save_resume_state(
+                resume_path,
+                model=talker,
+                optimizer=optimizer,
+                scheduler=lr_scheduler,
+                sampler=sampler,
+                completed_step=step,
+                run_config=run_config,
+                loss_history=loss_history,
+                step_losses=step_losses,
+                extra_state={
+                    "checkpoint_eval_history": checkpoint_eval_history,
+                    "consecutive_regressions": consecutive_regressions,
+                    "best_eval_cer": best_eval_cer,
+                    "best_eval_checkpoint": best_eval_checkpoint,
+                },
+            )
+        if stop_requested:
+            break
                 
     # Final save
     print("\nPhase T4 Training Complete! Saving final model adapter...", flush=True)
@@ -544,24 +636,58 @@ def train_phase_t4():
     total_time = time.perf_counter() - t_start
     final_report = {
         "curriculum_phase": "T4_data_scale_5h",
+        "evidence_status": "confirmatory rerun",
+        "run_name": run_name,
         "dataset": data_file,
+        "steps": NUM_STEPS,
         "sample_count": num_samples,
+        "training_seed": training_seed,
+        "sampler": "deterministic epoch shuffle",
+        "talker_trainable_parameters": talker_trainable_count,
+        "mtp_trainable_parameters": mtp_trainable_count,
+        "trainable_parameter_manifest": trainable_manifest,
         "effective_epochs": round(effective_epochs, 2),
-        "total_training_time_s": round(total_time, 2),
-        "total_training_time_min": round(total_time / 60, 2),
+        "completed_steps": len(step_losses),
+        "session_training_time_s": round(total_time, 2),
+        "session_training_time_min": round(total_time / 60, 2),
         "peak_vram_gb": round(torch.cuda.max_memory_allocated() / (1024**3), 2),
         "loss_history": loss_history,
         "checkpoint_eval_history": checkpoint_eval_history,
         "best_checkpoint_step": best_eval_checkpoint,
-        "best_checkpoint_cer": best_eval_cer
+        "best_checkpoint_cer": best_eval_cer if np.isfinite(best_eval_cer) else None,
+        "run_config": run_config,
+        "git_commit": git_commit(),
+        "environment": environment_record(),
     }
     
-    with open("reports/t4_training_summary.json", "w", encoding="utf-8") as f:
-        json.dump(final_report, f, indent=2, ensure_ascii=False)
+    report_path = f"reports/{run_name}_seed{training_seed}_training.json"
+    write_json(report_path, final_report)
         
-    print(f"Saved T4 training summary to reports/t4_training_summary.json", flush=True)
-    print(f"Best checkpoint identified: Step {best_eval_checkpoint} (CER: {best_eval_cer*100:.2f}%)", flush=True)
+    print(f"Saved T4 training summary to {report_path}", flush=True)
+    if best_eval_checkpoint is not None:
+        print(f"Best development checkpoint: Step {best_eval_checkpoint} (CER: {best_eval_cer*100:.2f}%)", flush=True)
+    else:
+        print(f"Fixed endpoint completed at step {len(step_losses)}; no checkpoint selection was performed.", flush=True)
     return best_eval_checkpoint
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Train the repaired five-hour joint condition")
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--steps", type=int, default=2500)
+    parser.add_argument("--warmup-steps", type=int, default=100)
+    parser.add_argument("--run-name", default="scaling_joint_5h_primary_2500")
+    parser.add_argument("--data-file", default="reports/mimi_codes_ro_5h.jsonl")
+    parser.add_argument("--save-every", type=int, default=250)
+    parser.add_argument("--run-quick40", action="store_true")
+    parser.add_argument("--force-fresh", action="store_true")
+    args = parser.parse_args()
+    os.environ["TRAINING_SEED"] = str(args.seed)
+    os.environ["NUM_STEPS"] = str(args.steps)
+    os.environ["WARMUP_STEPS"] = str(args.warmup_steps)
+    os.environ["RUN_NAME"] = args.run_name
+    os.environ["TRAIN_DATA_FILE"] = args.data_file
+    os.environ["SAVE_EVERY"] = str(args.save_every)
+    os.environ["RUN_QUICK40"] = "1" if args.run_quick40 else "0"
+    if args.force_fresh:
+        os.environ["FORCE_FRESH"] = "1"
     train_phase_t4()

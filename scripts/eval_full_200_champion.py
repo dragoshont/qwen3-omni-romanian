@@ -1,11 +1,11 @@
 import os
 os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 
+import argparse
 import sys
 import json
 import time
 import gc
-import re
 import random
 import hashlib
 import importlib.metadata
@@ -28,6 +28,12 @@ from transformers import (
 )
 from peft import PeftModel
 import jiwer
+from eval_protocol import (
+    PROMPT_SEED_NAMESPACE,
+    detect_repetition,
+    normalize_romanian_asr,
+    prompt_seed,
+)
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -36,22 +42,12 @@ ASR_REVISION = "41f01f3fe87f28c78e2fbf8b568835947dd65ed9"
 
 def set_generation_seed(seed):
     random.seed(seed)
-    np.random.seed(seed)
+    # NumPy's legacy RandomState accepts only unsigned 32-bit seeds. PyTorch
+    # retains the full stable per-prompt seed used by stochastic generation.
+    np.random.seed(seed % (2**32))
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
-
-def prompt_seed(base_seed, prompt_id):
-    """Stable, order-independent seed shared across checkpoint candidates."""
-    payload = f"t4-seeded-v2:{base_seed}:{prompt_id}".encode("utf-8")
-    return int.from_bytes(hashlib.sha256(payload).digest()[:8], "big") % (2**63 - 1)
-
-def normalize_romanian_asr(text):
-    """Minimal documented normalization for intelligibility scoring."""
-    text = unicodedata.normalize("NFC", text).lower()
-    text = text.replace("ş", "ș").replace("ţ", "ț")
-    text = "".join(" " if unicodedata.category(char).startswith("P") else char for char in text)
-    return " ".join(text.split())
 
 def hash_file(path):
     digest = hashlib.sha256()
@@ -81,25 +77,14 @@ def package_version(name):
     except importlib.metadata.PackageNotFoundError:
         return None
 
-def detect_repetition(text):
-    t_clean = text.lower().strip()
-    words = t_clean.split()
-    if len(words) >= 6:
-        for n in [1, 2, 3]:
-            ngrams = [' '.join(words[i:i+n]) for i in range(len(words)-n+1)]
-            for i in range(n, len(ngrams)):
-                if ngrams[i] == ngrams[i-n]:
-                    if i >= 2*n and ngrams[i] == ngrams[i-2*n]:
-                        return True
-    if re.search(r'(-[a-z]){5,}', t_clean):
-        return True
-    if len(words) >= 15:
-        unique_ratio = len(set(words)) / len(words)
-        if unique_ratio < 0.35:
-            return True
-    return False
-
-def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=None, output_dir=None, seed=42):
+def eval_champion_200(
+    adapter_path="models/T3_talker_mtp/final",
+    report_path=None,
+    output_dir=None,
+    seed=42,
+    eval_file="eval/ro_holdout_200.jsonl",
+    evaluation_name="Romanian prompt-only speech evaluation",
+):
     set_generation_seed(seed)
 
     torch.backends.cudnn.benchmark = False
@@ -111,7 +96,7 @@ def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=Non
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("=" * 70, flush=True)
-    print(f"FULL 200-SENTENCE HELD-OUT EVALUATION ON MODEL: {adapter_path}", flush=True)
+    print(f"PROMPT-ONLY EVALUATION ON MODEL: {adapter_path}", flush=True)
     print(f"Generation seed: {seed}", flush=True)
     print("=" * 70, flush=True)
     
@@ -182,15 +167,19 @@ def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=Non
         (torch.zeros((1, 3, 1024), device=device, dtype=torch.bfloat16), codec_special_embeds), dim=1
     )
     
-    # Load 200 held-out sentences
-    eval_file = "eval/ro_holdout_200.jsonl"
+    # Load the frozen prompt set.
     eval_samples = []
     with open(eval_file, "r", encoding="utf-8") as f:
         for line in f:
             if line.strip():
                 eval_samples.append(json.loads(line))
                 
-    print(f"Loaded exactly {len(eval_samples)} held-out sentences across 10 categories.", flush=True)
+    if not eval_samples:
+        raise ValueError(f"Evaluation set is empty: {eval_file}")
+    ids = [sample["id"] for sample in eval_samples]
+    if len(ids) != len(set(ids)):
+        raise ValueError(f"Evaluation IDs must be unique: {eval_file}")
+    print(f"Loaded {len(eval_samples)} frozen evaluation prompts.", flush=True)
     
     results = []
     total_gen_time = 0.0
@@ -333,10 +322,10 @@ def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=Non
         item["whisper_transcription"] = transcription
         item["normalized_reference_text"] = normalized_ref
         item["normalized_whisper_transcription"] = normalized_hyp
-        item["strict_wer"] = round(strict_w_err, 4)
-        item["strict_cer"] = round(strict_c_err, 4)
-        item["wer"] = round(w_err, 4)
-        item["cer"] = round(c_err, 4)
+        item["strict_wer"] = round(strict_w_err, 8)
+        item["strict_cer"] = round(strict_c_err, 8)
+        item["wer"] = round(w_err, 8)
+        item["cer"] = round(c_err, 8)
         item["has_repetition"] = has_rep
         
         cat = item["category"]
@@ -382,11 +371,14 @@ def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=Non
         git_commit = None
 
     final_report = {
-        "evaluation_name": "Full 200 Held-Out Romanian Evaluation",
+        "evaluation_name": evaluation_name,
+        "model_path": adapter_path,
+        # Backward-compatible key for the already-frozen issue #1 aggregator.
         "champion_model": adapter_path,
         "checkpoint_sha256": checkpoint_sha256,
         "checkpoint_member_sha256": checkpoint_members,
         "holdout_sha256": holdout_sha256,
+        "evaluation_file": eval_file,
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "git_commit": git_commit,
         "total_samples": n,
@@ -404,7 +396,7 @@ def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=Non
         "peak_vram_gb": round(vram_peak_gen, 2),
         "evaluation_config": {
             "seed": seed,
-            "per_prompt_seed_scheme": "sha256('t4-seeded-v2:{base_seed}:{prompt_id}') first 64 bits modulo 2^63-1",
+            "per_prompt_seed_scheme": f"sha256('{PROMPT_SEED_NAMESPACE}:{{base_seed}}:{{prompt_id}}') first 64 bits modulo 2^63-1",
             "deterministic_algorithms": "warn_only",
             "cublas_workspace_config": os.environ.get("CUBLAS_WORKSPACE_CONFIG"),
             "allow_tf32": False,
@@ -445,8 +437,19 @@ def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=Non
     print("=" * 70, flush=True)
 
 if __name__ == "__main__":
-    adapter = sys.argv[1] if len(sys.argv) > 1 else "models/T3_talker_mtp/final"
-    report = sys.argv[2] if len(sys.argv) > 2 else None
-    out_dir = sys.argv[3] if len(sys.argv) > 3 else None
-    seed = int(sys.argv[4]) if len(sys.argv) > 4 else 42
-    eval_champion_200(adapter, report, out_dir, seed)
+    parser = argparse.ArgumentParser(description="Run pinned, prompt-only Romanian speech evaluation")
+    parser.add_argument("adapter", nargs="?", default="models/T3_talker_mtp/final")
+    parser.add_argument("report", nargs="?", default=None)
+    parser.add_argument("output_dir", nargs="?", default=None)
+    parser.add_argument("seed", nargs="?", type=int, default=42)
+    parser.add_argument("--eval-file", default="eval/ro_holdout_200.jsonl")
+    parser.add_argument("--evaluation-name", default="Romanian prompt-only speech evaluation")
+    args = parser.parse_args()
+    eval_champion_200(
+        args.adapter,
+        args.report,
+        args.output_dir,
+        args.seed,
+        args.eval_file,
+        args.evaluation_name,
+    )
