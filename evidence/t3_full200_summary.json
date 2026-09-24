@@ -1,0 +1,17 @@
+{
+  "experiment": "T3",
+  "evaluation": "full200",
+  "n": 200,
+  "mean_cer_pct": 38.53,
+  "median_cer_pct": 29.3,
+  "p90_cer_pct": 45.13,
+  "mean_wer_pct": 87.85,
+  "median_wer_pct": 75.0,
+  "p90_wer_pct": 110.82,
+  "eos_success_pct": 100.0,
+  "max_token_pct": 0.0,
+  "repetition_pct": 1.5,
+  "mean_duration_s": 4.47,
+  "total_audio_s": 894.08,
+  "peak_inference_vram_gb": 7.27
+}

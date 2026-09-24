@@ -1,0 +1,45 @@
+experiment: t4_joint_5h
+status: in_progress
+purpose: controlled_data_scaling
+initialization: stock_base_plus_fresh_adapters
+base_model: Qwen3-Omni
+base_revision: e4235853125589c789f06a2dd83e9f4126df5e9d
+dataset:
+  target_duration_seconds: 18000
+  expected_unique_utterances: 3350
+  selection: deterministic_coverage_aware
+  exclude_full_200_normalized_matches: true
+audio:
+  sample_rate_hz: 24000
+  codec_streams: 16
+  target_encoder: mimi
+trainable:
+  thinker: false
+  code2wav: false
+  talker:
+    lora: {rank: 8, alpha: 16, targets: [q_proj, v_proj]}
+  mtp:
+    lora:
+      rank: 8
+      alpha: 16
+      targets: [q_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+quantization:
+  talker_base: nf4_4bit
+training:
+  optimizer_steps: 2500
+  gradient_accumulation_steps: 4
+  checkpoints: [500, 1000, 1500, 2000, 2500]
+evaluation:
+  seed: 42
+  temperature: 0.8
+  top_k: 50
+  top_p: 0.9
+  repetition_penalty: 1.15
+  max_tokens: 350
+  codec_eos_token_id: 2148
+  ground_truth_codec_tokens_at_inference: false
+selection:
+  quick40_is_screening_only: true
+  preserve_best_stable_mean: true
+  preserve_best_robust_median: true
+  full200_if_candidates_differ: true

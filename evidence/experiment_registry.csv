@@ -1,0 +1,9 @@
+experiment,trainable,data,configuration,evaluation,mean_cer_pct,median_cer_pct,mean_wer_pct,median_wer_pct,eos_success_pct,repetition_pct,status
+T0,stock,0,baseline,quick40,209.57,55.61,218.65,100.0,85.0,22.5,completed
+T1,mtp_only,~1h,mtp_lora,quick40,244.99,73.91,240.65,100.0,65.0,22.5,completed
+T2,talker_only,~1h,talker_lora_r8_a16,quick40,221.49,55.55,287.0,109.09,100.0,27.5,completed
+T3,joint,~1h,talker_mtp_lora_r8_a16,quick40,30.86,28.49,78.97,78.36,100.0,0.0,completed
+T3,joint,~1h,talker_mtp_lora_r8_a16,full200,38.53,29.3,87.85,75.0,100.0,1.5,completed
+T4,joint,~5h,talker_mtp_lora_r8_a16,quick40_step1000,26.03,24.68,70.04,69.62,100.0,0.0,intermediate
+T4,joint,~5h,talker_mtp_lora_r8_a16,quick40_step1500,26.5,25.44,71.36,72.73,100.0,0.0,intermediate
+T4,joint,~5h,talker_mtp_lora_r8_a16,quick40_step2000,59.87,22.74,106.95,66.67,100.0,2.5,intermediate

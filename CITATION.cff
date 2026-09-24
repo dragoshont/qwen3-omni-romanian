@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this research scaffold or its experimental results, please cite the repository and the specific commit."
+title: "Qwen3-Omni Romanian Speech Adaptation"
+type: software
+version: "0.1.0-research-preview"
+date-released: "2026-09-24"
+authors:
+  - name: "Project contributors"
+license: Apache-2.0

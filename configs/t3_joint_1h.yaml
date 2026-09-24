@@ -1,0 +1,29 @@
+experiment: t3_joint_1h
+status: completed
+base_model: Qwen3-Omni
+base_revision: e4235853125589c789f06a2dd83e9f4126df5e9d
+audio:
+  sample_rate_hz: 24000
+  codec_streams: 16
+  target_encoder: mimi
+trainable:
+  thinker: false
+  code2wav: false
+  talker:
+    lora: {rank: 8, alpha: 16, targets: [q_proj, v_proj]}
+  mtp:
+    lora:
+      rank: 8
+      alpha: 16
+      targets: [q_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+quantization:
+  talker_base: nf4_4bit
+evaluation:
+  seed: 42
+  temperature: 0.8
+  top_k: 50
+  top_p: 0.9
+  repetition_penalty: 1.15
+  max_tokens: 350
+  codec_eos_token_id: 2148
+  ground_truth_codec_tokens_at_inference: false

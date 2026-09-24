@@ -1,0 +1,45 @@
+{
+  "experiment": "T4",
+  "snapshot_local_time": "2026-09-24T18:28:00+03:00",
+  "training_step": 2140,
+  "training_steps_target": 2500,
+  "vram_gb": 12.57,
+  "joint_loss": 5.64,
+  "talker_loss": 2.37,
+  "mtp_loss": 3.08,
+  "status": "in_progress",
+  "quick40": {
+    "500": {
+      "mean_cer_pct": 65.43,
+      "median_cer_pct": 30.6,
+      "mean_wer_pct": 165.71,
+      "median_wer_pct": 80.0,
+      "eos_pct": 100.0,
+      "repetition_pct": 2.5
+    },
+    "1000": {
+      "mean_cer_pct": 26.03,
+      "median_cer_pct": 24.68,
+      "mean_wer_pct": 70.04,
+      "median_wer_pct": 69.62,
+      "eos_pct": 100.0,
+      "repetition_pct": 0.0
+    },
+    "1500": {
+      "mean_cer_pct": 26.5,
+      "median_cer_pct": 25.44,
+      "mean_wer_pct": 71.36,
+      "median_wer_pct": 72.73,
+      "eos_pct": 100.0,
+      "repetition_pct": 0.0
+    },
+    "2000": {
+      "mean_cer_pct": 59.87,
+      "median_cer_pct": 22.74,
+      "mean_wer_pct": 106.95,
+      "median_wer_pct": 66.67,
+      "eos_pct": 100.0,
+      "repetition_pct": 2.5
+    }
+  }
+}
