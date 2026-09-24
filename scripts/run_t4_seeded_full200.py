@@ -7,6 +7,7 @@ and records the expected seed. Generated audio remains ignored by Git.
 from __future__ import annotations
 
 import json
+import hashlib
 import subprocess
 import sys
 import time
@@ -21,7 +22,11 @@ CHECKPOINTS = {
 }
 
 
-def report_is_complete(path: Path, expected_seed: int) -> bool:
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def report_is_complete(path: Path, expected_seed: int, expected_checkpoint: str) -> bool:
     if not path.exists():
         return False
     try:
@@ -31,6 +36,10 @@ def report_is_complete(path: Path, expected_seed: int) -> bool:
             report.get("total_samples") == 200
             and len(report.get("detailed_results", [])) == 200
             and report.get("evaluation_config", {}).get("seed") == expected_seed
+            and report.get("evaluation_config", {}).get("per_prompt_seed_scheme")
+            and report.get("champion_model") == expected_checkpoint
+            and report.get("holdout_sha256") == sha256(ROOT / "eval" / "ro_holdout_200.jsonl")
+            and all("generation_seed" in row for row in report.get("detailed_results", []))
         )
     except (OSError, json.JSONDecodeError):
         return False
@@ -42,7 +51,7 @@ def main() -> None:
         for step, checkpoint in CHECKPOINTS.items():
             report = ROOT / "reports" / f"t4_seeded_step{step}_seed{seed}_full200.json"
             output = ROOT / "outputs" / f"t4_seeded_step{step}_seed{seed}_full200"
-            if report_is_complete(report, seed):
+            if report_is_complete(report, seed, checkpoint):
                 print(f"SKIP complete: step={step} seed={seed}", flush=True)
                 continue
 
@@ -69,4 +78,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
