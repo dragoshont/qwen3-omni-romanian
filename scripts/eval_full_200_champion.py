@@ -23,6 +23,13 @@ import jiwer
 
 sys.stdout.reconfigure(encoding="utf-8")
 
+def set_generation_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
 def detect_repetition(text):
     t_clean = text.lower().strip()
     words = t_clean.split()
@@ -42,11 +49,7 @@ def detect_repetition(text):
     return False
 
 def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=None, output_dir=None, seed=42):
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(seed)
+    set_generation_seed(seed)
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("=" * 70, flush=True)
@@ -131,6 +134,9 @@ def eval_champion_200(adapter_path="models/T3_talker_mtp/final", report_path=Non
                 
     print(f"Loaded exactly {len(eval_samples)} held-out sentences across 10 categories.", flush=True)
     
+    # Model loading can consume RNG state. Reset immediately before decoding so
+    # the recorded seed controls the stochastic generation sequence itself.
+    set_generation_seed(seed)
     results = []
     total_gen_time = 0.0
     total_audio_duration = 0.0
