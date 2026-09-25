@@ -1,0 +1,61 @@
+{
+  "protocol_version": "2026-09-24-v1",
+  "training_seeds": [42, 314, 2718],
+  "gradient_accumulation_steps": 4,
+  "optimizer": {
+    "name": "AdamW",
+    "betas": [0.9, 0.95],
+    "weight_decay": 0.01,
+    "talker_learning_rate": 0.00002,
+    "mtp_learning_rate": 0.00004
+  },
+  "conditions": [
+    {
+      "name": "component_talker_only_1h_1000",
+      "script": "scripts/train_phase_t2_talker.py",
+      "data_file": "reports/mimi_codes_ro1000.jsonl",
+      "steps": 1000,
+      "warmup_steps": 50,
+      "trainable": "Talker q_proj/v_proj only",
+      "contrast": "component ablation"
+    },
+    {
+      "name": "component_joint_1h_1000",
+      "script": "scripts/train_phase_t3_joint.py",
+      "data_file": "reports/mimi_codes_ro1000.jsonl",
+      "steps": 1000,
+      "warmup_steps": 50,
+      "trainable": "Talker q_proj/v_proj plus MTP q/v/o/gate/up/down",
+      "contrast": "component ablation"
+    },
+    {
+      "name": "scaling_joint_1h_matched_epochs_580",
+      "script": "scripts/train_phase_t3_joint.py",
+      "data_file": "reports/mimi_codes_ro1000.jsonl",
+      "steps": 580,
+      "warmup_steps": 100,
+      "trainable": "Talker q_proj/v_proj plus MTP q/v/o/gate/up/down",
+      "contrast": "approximately 2.32 corpus passes"
+    },
+    {
+      "name": "scaling_joint_1h_matched_updates_2500",
+      "script": "scripts/train_phase_t3_joint.py",
+      "data_file": "reports/mimi_codes_ro1000.jsonl",
+      "steps": 2500,
+      "warmup_steps": 100,
+      "trainable": "Talker q_proj/v_proj plus MTP q/v/o/gate/up/down",
+      "contrast": "2,500 matched optimizer updates"
+    },
+    {
+      "name": "scaling_joint_5h_primary_2500",
+      "script": "scripts/train_phase_t4_scaling.py",
+      "data_file": "reports/mimi_codes_ro_5h.jsonl",
+      "steps": 2500,
+      "warmup_steps": 100,
+      "trainable": "Talker q_proj/v_proj plus MTP q/v/o/gate/up/down",
+      "contrast": "five-hour primary condition"
+    }
+  ],
+  "checkpoint_selection": "fixed final endpoint; no evaluation-driven early stopping",
+  "external_test": "eval/ro_external_fleurs_v1.jsonl"
+}

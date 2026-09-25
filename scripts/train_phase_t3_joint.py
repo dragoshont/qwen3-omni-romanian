@@ -1,4 +1,7 @@
 import os
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+
+import argparse
 import sys
 import json
 import time
@@ -14,11 +17,27 @@ from transformers import (
     get_cosine_schedule_with_warmup,
 )
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from research_runtime import (
+    EpochShuffleSampler,
+    assert_adapter_isolation,
+    environment_record,
+    git_commit,
+    load_resume_state,
+    save_resume_state,
+    seed_everything,
+    sha256_file,
+    write_json,
+)
 
 sys.stdout.reconfigure(encoding="utf-8")
 
 def train_phase_t3():
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    training_seed = int(os.environ.get("TRAINING_SEED", "42"))
+    seed_everything(training_seed)
+    if not torch.cuda.is_available():
+        raise RuntimeError("This 4-bit training protocol requires CUDA")
+    device = torch.device("cuda:0")
+    run_name = os.environ.get("RUN_NAME", "component_joint_1h_1000")
     print("=" * 70, flush=True)
     print("PHASE T3: Joint Training: Romanian Talker LoRA + Romanian MTP LoRA", flush=True)
     print("=" * 70, flush=True)
@@ -27,7 +46,7 @@ def train_phase_t3():
     gc.collect()
     torch.cuda.reset_peak_memory_stats()
     
-    output_dir = "models/T3_talker_mtp/final"
+    output_dir = f"models/controlled/{run_name}/seed_{training_seed}"
     os.makedirs(output_dir, exist_ok=True)
     
     # 1. Load tokenizer & Embeddings
@@ -53,6 +72,10 @@ def train_phase_t3():
     
     # 3. Configure LoRA on both Talker and Code Predictor
     print("3. Configuring Joint LoRA on Talker and MTP...", flush=True)
+    # Prepare the quantized base before attaching any adapters. The PEFT helper
+    # freezes all parameters that already exist on the model.
+    talker = prepare_model_for_kbit_training(talker, use_gradient_checkpointing=True)
+
     # First attach LoRA to Code Predictor
     mtp_lora_config = LoraConfig(
         r=8,
@@ -65,12 +88,13 @@ def train_phase_t3():
     talker.code_predictor = get_peft_model(talker.code_predictor, mtp_lora_config)
     print("Attached LoRA to MTP Code Predictor.", flush=True)
     
-    # Then attach LoRA to Talker backbone
-    talker = prepare_model_for_kbit_training(talker, use_gradient_checkpointing=True)
+    # Then attach LoRA to the Talker proper. Exclusion is mandatory because
+    # PEFT otherwise matches q_proj/v_proj recursively inside code_predictor.
     talker_lora_config = LoraConfig(
         r=8,
         lora_alpha=16,
         target_modules=["q_proj", "v_proj"],
+        exclude_modules=r".*code_predictor.*",
         lora_dropout=0.0,
         bias="none",
         task_type="CAUSAL_LM",
@@ -96,7 +120,7 @@ def train_phase_t3():
     )
     
     # 4. Load Training Data
-    data_file = "reports/mimi_codes_ro1000.jsonl"
+    data_file = os.environ.get("TRAIN_DATA_FILE", "reports/mimi_codes_ro1000.jsonl")
     print(f"4. Loading training clips from {data_file}...", flush=True)
     train_samples = []
     with open(data_file, "r", encoding="utf-8") as f:
@@ -110,15 +134,23 @@ def train_phase_t3():
     print(f"Loaded {len(train_samples)} valid training samples.", flush=True)
     
     # 5. Training Hyperparameters
-    NUM_STEPS = 1000
-    GRAD_ACCUM_STEPS = 4
-    LEARNING_RATE_TALKER = 2e-5
-    LEARNING_RATE_MTP = 4e-5
-    WARMUP_STEPS = 50
+    NUM_STEPS = int(os.environ.get("NUM_STEPS", "1000"))
+    GRAD_ACCUM_STEPS = int(os.environ.get("GRAD_ACCUM_STEPS", "4"))
+    LEARNING_RATE_TALKER = float(os.environ.get("LEARNING_RATE_TALKER", "2e-5"))
+    LEARNING_RATE_MTP = float(os.environ.get("LEARNING_RATE_MTP", "4e-5"))
+    WARMUP_STEPS = int(os.environ.get("WARMUP_STEPS", "50"))
+    SAVE_EVERY = int(os.environ.get("SAVE_EVERY", "250"))
     
     # Distinct optimizer parameter groups for Talker and MTP
-    talker_params = [p for n, p in talker.named_parameters() if p.requires_grad and "code_predictor" not in n]
-    mtp_params = [p for n, p in talker.named_parameters() if p.requires_grad and "code_predictor" in n]
+    talker_params, mtp_params, trainable_manifest = assert_adapter_isolation(
+        talker, require_mtp=True
+    )
+    talker_trainable_count = trainable_manifest["talker_parameter_count"]
+    mtp_trainable_count = trainable_manifest["mtp_parameter_count"]
+    print(
+        f"Verified adapter isolation: Talker={talker_trainable_count:,}, MTP={mtp_trainable_count:,}",
+        flush=True,
+    )
     
     optimizer = torch.optim.AdamW([
         {"params": talker_params, "lr": LEARNING_RATE_TALKER},
@@ -130,6 +162,23 @@ def train_phase_t3():
         num_warmup_steps=WARMUP_STEPS,
         num_training_steps=NUM_STEPS,
     )
+
+    run_config = {
+        "condition": "joint_talker_mtp",
+        "run_name": run_name,
+        "training_seed": training_seed,
+        "data_file": data_file,
+        "data_sha256": sha256_file(data_file),
+        "sample_count": len(train_samples),
+        "num_steps": NUM_STEPS,
+        "gradient_accumulation_steps": GRAD_ACCUM_STEPS,
+        "learning_rate_talker": LEARNING_RATE_TALKER,
+        "learning_rate_mtp": LEARNING_RATE_MTP,
+        "warmup_steps": WARMUP_STEPS,
+        "mtp_frame_subsample": 64,
+        "sampler": "deterministic epoch shuffle",
+        "speaker_token_id": speaker_id,
+    }
     
     talker.train()
     optimizer.zero_grad()
@@ -137,18 +186,29 @@ def train_phase_t3():
     step_losses = []
     loss_history = []
     t_start = time.perf_counter()
-    sample_idx = 0
     total_samples = len(train_samples)
+    sampler = EpochShuffleSampler(total_samples, training_seed)
+    start_step = 0
+    resume_path = os.path.join(output_dir, "training_state.pt")
+    if os.path.exists(resume_path) and os.environ.get("FORCE_FRESH", "0") != "1":
+        start_step, loss_history, step_losses, _ = load_resume_state(
+            resume_path,
+            model=talker,
+            optimizer=optimizer,
+            scheduler=lr_scheduler,
+            sampler=sampler,
+            expected_config=run_config,
+        )
+        print(f"Resumed exact training state after step {start_step}.", flush=True)
     
     print("\nStarting Phase T3 Joint Training Loop (1000 steps)...", flush=True)
-    for step in range(1, NUM_STEPS + 1):
+    for step in range(start_step + 1, NUM_STEPS + 1):
         step_loss = 0.0
         step_talker_loss = 0.0
         step_mtp_loss = 0.0
         
         for micro_step in range(GRAD_ACCUM_STEPS):
-            sample = train_samples[sample_idx % total_samples]
-            sample_idx += 1
+            sample = train_samples[sampler.next()]
             
             transcript = sample["transcript"]
             codes_16 = torch.tensor(sample["codes_16"], dtype=torch.long, device=device) # [16, num_frames]
@@ -282,7 +342,7 @@ def train_phase_t3():
             avg_loss = sum(step_losses[-20:]) / len(step_losses[-20:])
             vram_gb = torch.cuda.memory_allocated() / (1024**3)
             elapsed = time.perf_counter() - t_start
-            sec_per_step = elapsed / step
+            sec_per_step = elapsed / max(1, step - start_step)
             eta_min = (NUM_STEPS - step) * sec_per_step / 60.0
             
             print(f"Step [{step:04d}/{NUM_STEPS}] | Joint Loss: {avg_loss:.4f} (T: {step_talker_loss:.4f}, MTP: {step_mtp_loss:.4f}) | VRAM: {vram_gb:.2f} GB | ETA: {eta_min:.1f}m", flush=True)
@@ -294,11 +354,22 @@ def train_phase_t3():
                 "vram_gb": round(vram_gb, 2),
             })
             
-        if step % 250 == 0 or step == NUM_STEPS:
+        if step % SAVE_EVERY == 0 or step == NUM_STEPS:
             ckpt_path = os.path.join(output_dir, f"checkpoint_step_{step}")
             talker.save_pretrained(ckpt_path)
             # Also save MTP adapter explicitly
             model_obj.code_predictor.save_pretrained(os.path.join(ckpt_path, "mtp_adapter"))
+            save_resume_state(
+                resume_path,
+                model=talker,
+                optimizer=optimizer,
+                scheduler=lr_scheduler,
+                sampler=sampler,
+                completed_step=step,
+                run_config=run_config,
+                loss_history=loss_history,
+                step_losses=step_losses,
+            )
             print(f"Saved checkpoint to {ckpt_path}", flush=True)
 
     print("\nPhase T3 Training completed! Saving final adapter model...", flush=True)
@@ -310,19 +381,46 @@ def train_phase_t3():
     
     metrics = {
         "phase": "T3_talker_mtp_joint",
+        "evidence_status": "confirmatory rerun",
+        "run_name": run_name,
         "steps": NUM_STEPS,
-        "final_loss": round(sum(step_losses[-20:]) / 20, 4),
-        "total_training_time_s": round(total_time, 2),
+        "training_seed": training_seed,
+        "sampler": "deterministic epoch shuffle",
+        "talker_trainable_parameters": talker_trainable_count,
+        "mtp_trainable_parameters": mtp_trainable_count,
+        "trainable_parameter_manifest": trainable_manifest,
+        "final_loss": round(sum(step_losses[-20:]) / min(20, len(step_losses)), 4),
+        "session_training_time_s": round(total_time, 2),
         "peak_vram_gb": round(peak_vram, 2),
         "loss_history": loss_history,
         "checkpoint_path": output_dir,
+        "run_config": run_config,
+        "git_commit": git_commit(),
+        "environment": environment_record(),
     }
     
-    with open("reports/T3_talker_mtp_training_metrics.json", "w", encoding="utf-8") as f:
-        json.dump(metrics, f, indent=2)
+    report_path = f"reports/{run_name}_seed{training_seed}_training.json"
+    write_json(report_path, metrics)
         
-    print(f"Saved metrics to reports/T3_talker_mtp_training_metrics.json")
+    print(f"Saved metrics to {report_path}")
     print("=" * 70, flush=True)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Train a repaired joint Talker+MTP condition")
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--steps", type=int, default=1000)
+    parser.add_argument("--warmup-steps", type=int, default=50)
+    parser.add_argument("--run-name", default="component_joint_1h_1000")
+    parser.add_argument("--data-file", default="reports/mimi_codes_ro1000.jsonl")
+    parser.add_argument("--save-every", type=int, default=250)
+    parser.add_argument("--force-fresh", action="store_true")
+    args = parser.parse_args()
+    os.environ["TRAINING_SEED"] = str(args.seed)
+    os.environ["NUM_STEPS"] = str(args.steps)
+    os.environ["WARMUP_STEPS"] = str(args.warmup_steps)
+    os.environ["RUN_NAME"] = args.run_name
+    os.environ["TRAIN_DATA_FILE"] = args.data_file
+    os.environ["SAVE_EVERY"] = str(args.save_every)
+    if args.force_fresh:
+        os.environ["FORCE_FRESH"] = "1"
     train_phase_t3()

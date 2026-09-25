@@ -1,0 +1,19 @@
+# Exact direct-package snapshot used by the 2026-09-24/25 repair campaign.
+# Python 3.11.16; Windows 11; NVIDIA driver 617.14; CUDA runtime 12.8.
+# Transitive packages should also be captured in an immutable container before
+# the final model release. PyTorch CUDA wheels may require the official index:
+#   pip install --extra-index-url https://download.pytorch.org/whl/cu128 -r requirements-lock.txt
+torch==2.11.0+cu128
+transformers==5.17.0
+peft==0.21.0
+bitsandbytes==0.50.2
+accelerate==1.15.0
+datasets==5.0.1
+huggingface-hub==1.32.0
+jiwer==4.0.0
+soundfile==0.14.0
+librosa==0.11.0
+safetensors==0.8.0
+numpy==2.4.6
+scipy==1.17.1
+tokenizers==0.23.2

@@ -1,208 +1,166 @@
-# Qwen3-Omni Romanian Speech Adaptation
+# Qwen3-Omni Romanian
 
-> **Research repository — completed T4 results, 24 September 2026.**
->
-> Ongoing evidence-first work on adapting the speech-generation path of **Qwen3-Omni** to Romanian on consumer hardware. The goal is reproducibility and falsifiable experiments, not a polished demo.
+## Target: intelligent spoken conversations in Romanian
 
-## Target
+The long-term target is a Qwen3-Omni system that can understand Romanian
+speech, reason over a multi-turn conversation, and answer directly with fluent,
+natural Romanian speech while retaining the model's broader multimodal
+abilities.
 
-The long-term target is a Qwen3-Omni system that can hold **natural, intelligent spoken conversations in Romanian**: understand Romanian speech, reason over the conversation and respond directly with fluent Romanian speech, while preserving the broader multimodal architecture.
+This repository currently studies one necessary part of that target: adapting
+the Qwen3-Omni **Talker + multi-token-prediction (MTP) speech-generation path**
+to Romanian on a 16 GB consumer GPU. It does not yet demonstrate a complete
+conversational assistant, preserved multimodal capability, a validated speaker
+identity, natural prosody, or low-latency duplex behavior.
 
-This repository currently addresses the speech-generation part of that goal. It tests whether the released Talker/MTP path can be adapted to Romanian reproducibly on a 16 GB consumer GPU. It does **not** yet claim a complete low-latency duplex assistant; interruption, backchannels and simultaneous listening/speaking remain later research stages.
+> **Status: research preview under confirmatory rerun.** Historical T0-T4
+> results are useful exploratory evidence, but they are not final model claims.
 
-Code, model adapters, datasets and archival research snapshots have different publication requirements. See the [artifact publication plan](docs/artifact-publication-plan.md) for what belongs on GitHub, Hugging Face and Zenodo.
+## Why the experiment is being rerun
 
-## Current status
+An adversarial audit found three issues that materially limit the original
+interpretation:
 
-The core hypothesis is working:
+1. the Full-200 evaluator sampled stochastically without applying its recorded
+   seed;
+2. the condition labeled “Talker-only” also trained 204,800 MTP parameters
+   because PEFT matched `q_proj`/`v_proj` recursively;
+3. the one-hour and five-hour runs differed in data order, steps, warmup,
+   schedule, exposure, and uncontrolled training randomness, so they did not
+   isolate a pure data-scaling effect.
 
-- a practical 16-stream Romanian target-code bridge has been validated through frozen Qwen Code2Wav;
-- real Talker + MTP adaptation fits on an RTX 5080 16 GB at roughly 12–13 GB VRAM;
-- a joint ~1-hour Romanian run (T3) produces autonomous Romanian speech;
-- the controlled ~5-hour run (T4) improves both mean and median Full-200 CER over T3.
+No evidence has been deleted or silently rewritten. Original reports remain as
+historical artifacts. The full finding register and remediation requirements
+are in [`reports/adversarial_peer_review.md`](reports/adversarial_peer_review.md).
 
-**T4 training is complete. Step 2,500 is the provisional multi-metric champion:** 30.73% mean CER, 22.85% median CER, 100% EOS success and 1.0% repetition on its Full-200 run. Because the completed comparisons used one unseeded stochastic decode per checkpoint, final release selection requires seeded repeats and native-listener evaluation.
+## Corrected confirmatory design
 
-## Why this exists
+The repaired campaign is frozen in
+[`configs/confirmatory_matrix.json`](configs/confirmatory_matrix.json) and
+[`experiments/CONFIRMATORY_PROTOCOL.md`](experiments/CONFIRMATORY_PROTOCOL.md).
 
-Qwen3-Omni offers a useful starting point for a Romanian conversational speech model: multimodal semantic reasoning, a speech-generation Talker, MTP prediction for additional acoustic streams, and a waveform decoder.
+- training seeds: 42, 314, and 2718;
+- deterministic epoch shuffling;
+- fresh adapters and fixed final endpoints;
+- runtime assertions for exact Talker/MTP trainable-module isolation;
+- resumable adapter, optimizer, scheduler, sampler, and RNG state;
+- true Talker-only versus joint Talker+MTP at matched data and updates;
+- one-hour versus five-hour joint training at matched updates;
+- one-hour versus five-hour joint training at approximately matched corpus
+  passes;
+- paired multi-seed decoding with pinned Whisper scoring;
+- a 200-prompt external Romanian FLEURS test frozen before retraining.
 
-The main research questions are:
+Full-200 is now explicitly a **development/selection set**, because Quick-40 is
+its subset and the set has already been inspected repeatedly. Confirmatory
+claims use the external protocol in
+[`eval/EXTERNAL_TEST_PROTOCOL.md`](eval/EXTERNAL_TEST_PROTOCOL.md).
 
-1. Can valid Romanian target speech tokens be constructed for the released Talker/MTP path?
-2. Can meaningful adaptation be trained on a **16 GB consumer GPU**?
-3. Does Romanian quality improve as clean data scales?
-4. Can this be done while preserving the broader Omni architecture rather than replacing it with standalone TTS?
-5. Later: can the same system support low-latency duplex interaction, interruption and backchannels?
+## Historical exploratory evidence
 
-## Headline evidence
+The original work established that the implementation can train and synthesize
+prompt-only Romanian speech on an RTX 5080 16 GB. These values are retained for
+audit, not presented as confirmatory comparisons.
 
-### 1. Codec bridge
+| Historical run | Evaluation | Mean CER | Median CER | EOS | Repetition proxy | Interpretation |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| T3 joint, ~1 h | Full-200 | 38.53% | 29.30% | 100% | 1.5% | exploratory single run |
+| T4 step 1,000, ~5 h | Full-200 | 30.09% | 23.91% | 100% | 0.5% | unseeded development result |
+| T4 step 2,000, ~5 h | Full-200 | 36.00% | 23.46% | 100% | 1.0% | unstable-tail development result |
+| T4 step 2,500, ~5 h | Full-200 | 30.73% | 22.85% | 100% | 1.0% | provisional development candidate |
 
-In an initial 30-clip test, 24 kHz Romanian speech was encoded with Mimi, the first 16 codebooks were retained, and those codes were decoded with Qwen3-Omni Code2Wav.
+The old T2 label is invalid: it was Talker plus partial-MTP adaptation, not a
+Talker-only control. The old T3/T4 contrast also mixed data volume with compute
+and schedule. Those results must not be cited as causal ablations.
 
-Independent ASR measured approximately:
+## Codec-bridge evidence
 
-- original recordings: **5.8% WER**
-- Mimi → Qwen Code2Wav reconstruction: **6.4% WER**
+Thirty single-speaker clips were encoded with Mimi, restricted to 16 codebooks,
+and decoded through Qwen Code2Wav. Whisper WER was approximately 5.8% on the
+original clips and 6.4% after reconstruction. The paired difference was about
++0.58 percentage points with a bootstrap interval spanning zero.
 
-This strongly supports the practical target-token strategy.
+This is narrow feasibility evidence for that dataset and configuration—not
+proof that Mimi is Qwen's officially documented canonical encoder, and not a
+general compatibility result across speakers, domains, or recording conditions.
 
-**Important:** this repository does not claim that Qwen officially documents Mimi as the canonical Qwen3-Omni target encoder. The evidence is practical/community-derived plus our own bridge test.
-
-### 2. Consumer-GPU training
-
-Real Talker/MTP training, not just a toy dry run, occupies approximately:
-
-- T2: **12.13 GB**
-- T3: **12.16 GB**
-- T4: **12.57 GB**
-
-on an RTX 5080 16 GB.
-
-### 3. Joint adaptation works
-
-The controlled experiment sequence is:
-
-```text
-T0  stock speech path
- |
- +-- T1  MTP-only
- |
- +-- T2  Talker-only + explicit codec EOS
- |
- +-- T3  joint Talker + MTP, ~1 h Romanian
- |
- +-- T4  same architecture, fresh adapters, ~5 h Romanian
-```
-
-The principal T3/T4 architecture is:
+## Architecture under test
 
 ```text
 Qwen3-Omni base
-├─ Thinker                         frozen
-├─ Talker
-│  └─ LoRA r=8, alpha=16
-│     q_proj, v_proj
-├─ MTP
-│  └─ LoRA r=8, alpha=16
-│     q_proj, v_proj, o_proj,
-│     gate_proj, up_proj, down_proj
-└─ Code2Wav                       frozen
-
-Talker base: NF4 / 4-bit
-Targets: 16 codec streams
+├─ Thinker                                  frozen / cached embeddings
+├─ Talker                                   NF4 base, LoRA r=8 alpha=16
+│  └─ q_proj, v_proj
+├─ MTP / code predictor                     joint conditions only
+│  └─ q_proj, v_proj, o_proj,
+│     gate_proj, up_proj, down_proj          LoRA r=8 alpha=16
+└─ Code2Wav                                 frozen
 ```
 
-## T3 result
+The training targets contain 16 codec streams. The current single-speaker
+corpus is reported by its pinned dataset card as the Romanian female speaker
+“Sanda”; inference uses Qwen's `Ethan` speaker token. That conditioning mismatch
+is documented and must be resolved before any voice-identity claim or release.
 
-### Quick-40
+## Reproducing the repair
 
-| Metric | T3 |
-|---|---:|
-| Mean CER | 30.86% |
-| Median CER | 28.49% |
-| Mean WER | 78.97% |
-| Median WER | 78.36% |
-| EOS success | 100% |
-| Max-token termination | 0% |
-| Repetition loops | 0% |
+The exact direct-package snapshot is in `requirements-lock.txt`; Python 3.11.16,
+PyTorch 2.11.0+cu128, Transformers 5.17.0, PEFT 0.21.0, and bitsandbytes 0.50.2
+were used for the repair campaign.
 
-### Full-200
+```powershell
+# Dependency-light repository checks
+python -m compileall -q scripts tests
+python -m unittest discover -s tests -v
 
-| Metric | T3 |
-|---|---:|
-| Mean CER | 38.53% |
-| Median CER | 29.30% |
-| P90 CER | 45.13% |
-| Mean WER | 87.85% |
-| Median WER | 75.00% |
-| P90 WER | 110.82% |
-| EOS success | 100% |
-| Max-token termination | 0% |
-| Repetition loops | 1.5% (3/200) |
-| Mean generated duration | 4.47 s |
-| Peak inference VRAM | 7.27 GB |
+# Saved-checkpoint correction for issue #1 (resumable by completed report)
+python scripts/run_t4_seeded_full200.py
 
-This is evidence that adaptation works. It is **not** yet a production-quality Romanian voice.
+# Long, resumable 15-run confirmatory training matrix
+python scripts/run_confirmatory_training_matrix.py
+```
 
-## T4 result
+Base weights, codec targets, training audio, generated WAVs, and adapters are
+intentionally excluded from ordinary Git history. Public manifests contain
+stable source rows and content hashes without redistributing audio or codec
+tokens. See [`docs/reproducibility.md`](docs/reproducibility.md) and
+[`DATA_PROVENANCE.md`](DATA_PROVENANCE.md).
 
-T4 starts from the same stock Qwen base with **fresh adapters**. It is not a continuation from T3. Step 2,500 was selected provisionally by the existing composite score after Full-200 evaluation of steps 1,000, 2,000 and 2,500.
+## Publication plan
 
-| Full-200 run | Mean CER | Median CER | P90 CER | Mean WER | Median WER | EOS | Repetition |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| T3 control | 38.53% | 29.30% | 45.13% | 87.85% | 75.00% | 100% | 0.0% |
-| T4 step 1000 | **30.09%** | 23.91% | 44.28% | 76.10% | 70.00% | 100% | 0.5% |
-| T4 step 2000 | 36.00% | 23.46% | **39.24%** | 77.62% | 65.99% | 100% | 1.0% |
-| T4 step 2500 | 30.73% | **22.85%** | 41.47% | **75.81%** | **63.64%** | 100% | 1.0% |
+- **GitHub:** source, protocols, manifests, tests, report summaries, and issue
+  history;
+- **Hugging Face model repository:** versioned Talker/MTP adapters, model card,
+  base-model relationship, immutable hashes, intended use, and limitations;
+- **Hugging Face dataset repository:** only redistribution-cleared manifests,
+  evaluation metadata, and licensed audio examples;
+- **Zenodo:** an immutable GitHub release and report bundle with a DOI;
+- **Unsloth:** compatibility/export path if the final architecture is supported,
+  not the canonical scientific archive.
 
-Compared with T3 in these runs, step 2,500 reduces mean CER by 20.3% and median CER by 22.0%. The [verification audit](reports/t4_verification_audit.md) explains the report repair, train/eval alignment check, uncertainty and remaining selection gate; the [provisional declaration](reports/t4_final_champion_declaration.md) contains the full category comparison.
-
-This is a research result, not production-quality Romanian speech. ASR error remains high, category performance is uneven and native-listener evaluation is still required.
-
-## Evaluation
-
-A held-out generation only counts when inference receives **prompt text only**. Ground-truth codec tokens are forbidden at inference.
-
-The Romanian Full-200 benchmark has 20 unseen prompts in each of ten categories:
-
-1. conversational Romanian;
-2. ă/â/î;
-3. ș/ț;
-4. ce/ci/ge/gi/che/chi/ghe/ghi;
-5. consonant clusters;
-6. numbers, dates and currency;
-7. Romanian names and places;
-8. English technical loanwords / code-switching;
-9. questions and exclamations;
-10. long natural sentences.
-
-Metrics include independent Whisper WER/CER, mean/median/tail errors, EOS success, max-token termination, repetition/collapse rate, latency and memory. Human native-speaker evaluation is planned because ASR is not a complete measure of speech quality.
+No adapter is a final release candidate until clean-environment reproduction,
+rights review, the external test, independent-ASR sensitivity analysis, and a
+blinded native-Romanian listening study are complete. Detailed gates are in
+[`docs/artifact-publication-plan.md`](docs/artifact-publication-plan.md).
 
 ## Repository map
 
 ```text
-.
-├── README.md
-├── STATUS.md
-├── ROADMAP.md
-├── RESEARCH_QUESTIONS.md
-├── DATA_PROVENANCE.md
-├── LEGAL.md
-├── CITATION.cff
-├── configs/
-├── data/
-├── docs/
-├── eval/
-├── evidence/
-├── experiments/
-├── models/
-├── paper/
-└── scripts/
+configs/       frozen machine-readable experiment definitions
+data/          documentation only; local audio is ignored
+docs/          methodology, evidence, provenance, and release plans
+eval/          development prompts and frozen external-test specification
+experiments/   per-phase records and confirmatory protocol
+manifests/     public code-free training manifests with hashes
+models/        documentation only; local weights are ignored
+reports/       historical evidence and generated audit reports
+scripts/       preparation, training, evaluation, aggregation, and validation
+tests/         dependency-light protocol and manifest integrity checks
 ```
 
-## Data and weights
+## Responsible interpretation
 
-This public scaffold intentionally contains **no copyrighted audiobook audio or book text**, no redistributed Qwen base weights, and no rights-unclear voice checkpoint.
-
-A private audiobook-alignment research lane is documented separately, but any public release of data or weights gets a separate rights review.
-
-## What feedback would be most useful?
-
-Please open an issue if you can reproduce, falsify or improve any of these:
-
-- Mimi/Qwen codec compatibility;
-- Talker/MTP target alignment;
-- EOS supervision;
-- rare catastrophic loops during later checkpoints;
-- better Romanian corpora with clear provenance;
-- low-VRAM training;
-- frozen-Thinker conditioning parity;
-- paths toward duplex Romanian conversation.
-
-## Status
-
-**Research preview / pre-paper.**
-
-Publishing early is deliberate: assumptions are cheapest to correct before the experiment grows.
+ASR CER/WER measure an intelligibility proxy. They do not measure naturalness,
+prosody, conversational intelligence, safety, consent, or speaker similarity.
+Please cite a specific commit and label historical versus confirmatory evidence
+when discussing results.
