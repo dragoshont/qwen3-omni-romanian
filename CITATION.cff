@@ -5,5 +5,8 @@ type: software
 version: "0.1.0-research-preview"
 date-released: "2026-09-24"
 authors:
-  - name: "Project contributors"
+  - family-names: "Hont"
+    given-names: "Dragos"
+    alias: "dragoshont"
+    url: "https://github.com/dragoshont"
 license: Apache-2.0

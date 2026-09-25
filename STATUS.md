@@ -1,25 +1,41 @@
 # Status
 
-_Last updated: 2026-09-24 21:25 EEST_
+_Last updated: 2026-09-25 EEST_
 
-## Completed experiment
+## Active correction
 
-**T4 — controlled ~5-hour data-scaling experiment**
+GitHub issue #1 tracks the stochastic-seed defect in the historical Full-200
+checkpoint comparison. The repaired evaluation compares saved T4 steps 1,000
+and 2,500 over 200 development prompts and three paired generation seeds
+(1,200 generations). No final selection is reported until that matrix and its
+prompt-clustered analysis complete.
 
-- completed: 2,500 optimizer steps
-- gradient accumulation: 4
-- peak training VRAM: ~12.57 GB
-- Full-200 candidates evaluated: steps 1,000, 2,000 and 2,500
-- provisional champion: step 2,500
-- provisional-candidate mean / median CER: 30.73% / 22.85%
-- provisional-candidate mean / median WER: 75.81% / 63.64%
-- EOS success: 100%
-- repetition rate: 1.0%
+## Confirmatory retraining
 
-## Interpretation
+The adversarial audit also found issues that saved-checkpoint evaluation cannot
+repair. A frozen 15-run campaign (five conditions × three training seeds) is
+specified in `configs/confirmatory_matrix.json`:
 
-Relative to the T3 one-hour control, T4 step 2,500 reduces mean CER by 20.3% and median CER by 22.0% on the same Full-200 prompt set. Step 2,500 narrowly wins the existing composite score, while step 1,000 retains a slightly better raw mean CER and lower repetition. Because each checkpoint has only one unseeded stochastic run, step 2,500 remains provisional.
+- true Talker-only versus joint Talker+MTP at 1,000 updates;
+- one-hour versus five-hour joint training at 2,500 matched updates;
+- one-hour versus five-hour joint training at approximately 2.32 matched
+  corpus passes.
 
-See [`reports/t4_verification_audit.md`](reports/t4_verification_audit.md) for the integrity audit and [`reports/t4_final_champion_declaration.md`](reports/t4_final_champion_declaration.md) for the provisional comparison.
+All new runs use deterministic shuffling, explicit adapter isolation, fixed
+endpoints, complete resumable state, seed-specific outputs, and pinned local
+input hashes. A 200-prompt Romanian FLEURS external test was frozen before the
+new training campaign.
 
-The immediate gate is seeded repeated Full-200 evaluation of steps 1,000 and 2,500, followed by native-listener evaluation. Clean-environment reproduction and release-rights review follow after checkpoint selection is frozen.
+## Historical evidence label
+
+Original T0-T4 reports remain available and unchanged as exploratory evidence.
+The T2 report is mislabeled historically because the adapter contains partial
+MTP weights. The original T3/T4 comparison confounds data volume with schedule
+and compute. Step 2,500 is therefore only a historical development candidate,
+not a release champion.
+
+## Release gates
+
+External-test analysis, independent-ASR sensitivity, blinded native-Romanian
+listening, clean-environment reproduction, and data/voice-rights review remain
+required before model publication.
